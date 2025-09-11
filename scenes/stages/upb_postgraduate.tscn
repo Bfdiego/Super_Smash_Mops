@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://bjiwlixhrfo42" path="res://assets/images/upb_postgraduate.jpeg" id="1_v56jc"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_v56jc"]
-load_path = "res://.godot/imported/bloblob.jpeg-58b97aea81d02b21d98a55ec492c3dc2.ctex"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tyeeq"]
 size = Vector2(579, 50)
