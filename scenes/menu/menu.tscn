@@ -1,3 +1,10 @@
-[gd_scene format=3 uid="uid://bsmdhe4tdv60d"]
+[gd_scene load_steps=2 format=3 uid="uid://bsmdhe4tdv60d"]
+
+[ext_resource type="Texture2D" uid="uid://cxkod2iek3dgf" path="res://assets/images/upb_campus.jpeg" id="1_klgdb"]
 
 [node name="Menu" type="Node2D"]
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 1921.0
+offset_bottom = 1081.0
+texture = ExtResource("1_klgdb")

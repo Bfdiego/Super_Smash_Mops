@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxkod2iek3dgf"
-path="res://.godot/imported/upb_campus.jpeg-d146c25f432a4063e9c5b26f911dc647.ctex"
+uid="uid://bb6qf3c8exs11"
+path="res://.godot/imported/bloblob.jpeg-58b97aea81d02b21d98a55ec492c3dc2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/upb_campus.jpeg"
-dest_files=["res://.godot/imported/upb_campus.jpeg-d146c25f432a4063e9c5b26f911dc647.ctex"]
+source_file="res://assets/images/bloblob.jpeg"
+dest_files=["res://.godot/imported/bloblob.jpeg-58b97aea81d02b21d98a55ec492c3dc2.ctex"]
 
 [params]
 
