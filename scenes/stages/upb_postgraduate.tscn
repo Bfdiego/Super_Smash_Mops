@@ -1,7 +1,9 @@
 [gd_scene load_steps=4 format=3 uid="uid://dqnit4r01sn0l"]
 
 [ext_resource type="Texture2D" uid="uid://bjiwlixhrfo42" path="res://assets/images/upb_postgraduate.jpeg" id="1_v56jc"]
-[ext_resource type="Texture2D" uid="uid://bb6qf3c8exs11" path="res://assets/images/bloblob.jpeg" id="2_bjsmk"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_v56jc"]
+load_path = "res://.godot/imported/bloblob.jpeg-58b97aea81d02b21d98a55ec492c3dc2.ctex"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tyeeq"]
 size = Vector2(579, 50)
@@ -21,7 +23,7 @@ position = Vector2(1160, 513)
 [node name="Sprite2D" type="Sprite2D" parent="Plataforms/Plataform"]
 position = Vector2(257.5, -7)
 scale = Vector2(9.04687, 0.78125)
-texture = ExtResource("2_bjsmk")
+texture = SubResource("CompressedTexture2D_v56jc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Plataforms/Plataform"]
 position = Vector2(257.5, -7)
@@ -33,7 +35,7 @@ position = Vector2(-853, 195)
 [node name="Sprite2D" type="Sprite2D" parent="Plataforms/Plataform2"]
 position = Vector2(257.5, -7)
 scale = Vector2(9.04687, 0.78125)
-texture = ExtResource("2_bjsmk")
+texture = SubResource("CompressedTexture2D_v56jc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Plataforms/Plataform2"]
 position = Vector2(257.5, -7)

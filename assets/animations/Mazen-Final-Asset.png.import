@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bb6qf3c8exs11"
-path="res://.godot/imported/bloblob.jpeg-58b97aea81d02b21d98a55ec492c3dc2.ctex"
+uid="uid://wcmrgmbbwbub"
+path="res://.godot/imported/Mazen-Final-Asset.png-60cd26c13f518b7120191da576caf73f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/bloblob.jpeg"
-dest_files=["res://.godot/imported/bloblob.jpeg-58b97aea81d02b21d98a55ec492c3dc2.ctex"]
+source_file="res://assets/animations/Mazen-Final-Asset.png"
+dest_files=["res://.godot/imported/Mazen-Final-Asset.png-60cd26c13f518b7120191da576caf73f.ctex"]
 
 [params]
 

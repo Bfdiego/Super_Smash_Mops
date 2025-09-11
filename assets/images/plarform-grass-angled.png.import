@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://q253p16rgab6"
-path="res://.godot/imported/Agui-Final-Asset.png-d06f421f92a2fc743ad152c3b387d4ce.ctex"
+uid="uid://cdlkmkbijyrnk"
+path="res://.godot/imported/plarform-grass-angled.png-bc72f1374fd07191ff9c8c19b795e2f1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/animations/Agui-Final-Asset.png"
-dest_files=["res://.godot/imported/Agui-Final-Asset.png-d06f421f92a2fc743ad152c3b387d4ce.ctex"]
+source_file="res://assets/images/plarform-grass-angled.png"
+dest_files=["res://.godot/imported/plarform-grass-angled.png-bc72f1374fd07191ff9c8c19b795e2f1.ctex"]
 
 [params]
 

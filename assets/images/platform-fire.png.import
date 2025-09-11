@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://q253p16rgab6"
-path="res://.godot/imported/Agui-Final-Asset.png-d06f421f92a2fc743ad152c3b387d4ce.ctex"
+uid="uid://krp0x1g14x5s"
+path="res://.godot/imported/platform-fire.png-92ef8251db9409294bb79570f3853d64.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/animations/Agui-Final-Asset.png"
-dest_files=["res://.godot/imported/Agui-Final-Asset.png-d06f421f92a2fc743ad152c3b387d4ce.ctex"]
+source_file="res://assets/images/platform-fire.png"
+dest_files=["res://.godot/imported/platform-fire.png-92ef8251db9409294bb79570f3853d64.ctex"]
 
 [params]
 

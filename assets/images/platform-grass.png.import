@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://q253p16rgab6"
-path="res://.godot/imported/Agui-Final-Asset.png-d06f421f92a2fc743ad152c3b387d4ce.ctex"
+uid="uid://dlbxrateho43m"
+path="res://.godot/imported/platform-grass.png-4627101bdf6e77b439bd22be5be31435.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/animations/Agui-Final-Asset.png"
-dest_files=["res://.godot/imported/Agui-Final-Asset.png-d06f421f92a2fc743ad152c3b387d4ce.ctex"]
+source_file="res://assets/images/platform-grass.png"
+dest_files=["res://.godot/imported/platform-grass.png-4627101bdf6e77b439bd22be5be31435.ctex"]
 
 [params]
 
