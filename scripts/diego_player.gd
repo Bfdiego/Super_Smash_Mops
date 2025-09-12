@@ -8,13 +8,34 @@ var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var collision_floor = $CollisionFloor
 @onready var flip_node = $FlipNode
 
+var in_air: bool = false
 var attacking: bool = false
 var current_attack: String = ""
 var last_state: String = ""
-var in_air: bool = false
+var player_one: bool = true
 var flip_offset = Vector2(3, 0) 
 var flip_offset_2 = Vector2(70, 0) 
-	
+
+var key_left: String = ""
+var key_right: String = ""
+var key_jump: String = ""
+var key_attack1: String = ""
+var key_attack2: String = ""
+
+func _ready() -> void:
+	if player_one:
+		key_left = "left_p1"
+		key_right = "right_p1"
+		key_jump = "jump_p1"
+		key_attack1 = "attack1_p1"
+		key_attack2 = "attack2_p1"
+	else:
+		key_left = "left_p2"
+		key_right = "right_p2"
+		key_jump = "jump_p2"
+		key_attack1 = "attack1_p2"
+		key_attack2 = "attack2_p2"
+
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y += gravity * delta
@@ -24,20 +45,20 @@ func _physics_process(delta: float) -> void:
 	else:
 		in_air = false
 	
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_just_pressed(key_jump) and is_on_floor():
 		velocity.y = jump_force
 		in_air = true
 		_play_state("Jump")
 	
 	if not attacking:
-		if in_air and (Input.is_action_just_pressed("attack1") or Input.is_action_just_pressed("attack2")):
+		if in_air and (Input.is_action_just_pressed(key_attack1) or Input.is_action_just_pressed(key_attack2)):
 			_start_attack("Attack3")
-		elif not in_air and Input.is_action_just_pressed("attack1"):
+		elif not in_air and Input.is_action_just_pressed(key_attack1):
 			_start_attack("Attack1")
-		elif not in_air and Input.is_action_just_pressed("attack2"):
+		elif not in_air and Input.is_action_just_pressed(key_attack2):
 			_start_attack("Attack2")
 
-	var direction = Input.get_axis("ui_left", "ui_right")
+	var direction = Input.get_axis(key_left, key_right)
 	if direction != 0:
 		velocity.x = direction * speed
 		
@@ -79,7 +100,8 @@ func _start_attack(attack_name: String) -> void:
 	attacking = true
 	current_attack = attack_name
 	_play_state(attack_name)
-	await $AnimationTree.animation_finished
+
+func end_attack():
 	attacking = false
 	current_attack = ""
 
