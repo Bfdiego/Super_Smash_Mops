@@ -12,7 +12,7 @@ var attacking: bool = false
 var current_attack: String = ""
 var last_state: String = ""
 var in_air: bool = false
-var flip_offset = Vector2(10, 0) 
+var flip_offset = Vector2(3, 0) 
 var flip_offset_2 = Vector2(70, 0) 
 	
 func _physics_process(delta: float) -> void:
@@ -51,6 +51,7 @@ func _physics_process(delta: float) -> void:
 			flip_node.scale.x = 1
 			flip_node.position.x = -flip_offset.x
 			collision_floor.scale.x = 1
+			collision_floor.position.x = -flip_offset.x
 			$Sprite2D.scale.x = abs($Sprite2D.scale.x) 
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)

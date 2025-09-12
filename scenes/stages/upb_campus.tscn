@@ -20,6 +20,7 @@ texture = ExtResource("1_3vog7")
 position = Vector2(1160, 513)
 
 [node name="Plataform" type="StaticBody2D" parent="Plataforms"]
+collision_layer = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Plataforms/Plataform"]
 position = Vector2(-730.5, 301.5)
@@ -32,6 +33,7 @@ shape = SubResource("RectangleShape2D_q7swc")
 
 [node name="Plataform2" type="StaticBody2D" parent="Plataforms"]
 position = Vector2(236, 0)
+collision_layer = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Plataforms/Plataform2"]
 position = Vector2(-730.5, 301.5)
@@ -42,7 +44,7 @@ texture = ExtResource("2_bjfve")
 position = Vector2(-731.75, 308)
 shape = SubResource("RectangleShape2D_q7swc")
 
-[node name="Player1" parent="." instance=ExtResource("3_bjfve")]
+[node name="AguiPlayer" parent="." instance=ExtResource("3_bjfve")]
 visible = false
 position = Vector2(389, 543)
 

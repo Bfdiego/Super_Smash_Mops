@@ -466,6 +466,7 @@ transitions = ["Jump", "Attack3", SubResource("AnimationNodeStateMachineTransiti
 graph_offset = Vector2(6, 0)
 
 [node name="DiegoPlayer" type="CharacterBody2D"]
+collision_mask = 2
 script = ExtResource("1_wll10")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
