@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://f1f3ktkwemxk"]
+[gd_scene load_steps=6 format=3 uid="uid://f1f3ktkwemxk"]
 
 [ext_resource type="Texture2D" uid="uid://cxkod2iek3dgf" path="res://assets/images/upb_campus.jpeg" id="1_3vog7"]
 [ext_resource type="Texture2D" uid="uid://dlbxrateho43m" path="res://assets/images/platform-grass.png" id="2_bjfve"]
 [ext_resource type="PackedScene" uid="uid://dvbpse3xbc86v" path="res://scenes/characters/player1.tscn" id="3_bjfve"]
+[ext_resource type="PackedScene" uid="uid://bnn8uw247sqkf" path="res://scenes/characters/mazen_player.tscn" id="4_q7swc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q7swc"]
 size = Vector2(236.5, 77)
@@ -43,3 +44,6 @@ shape = SubResource("RectangleShape2D_q7swc")
 [node name="Player1" parent="." instance=ExtResource("3_bjfve")]
 visible = false
 position = Vector2(389, 543)
+
+[node name="MazenPlayer" parent="." instance=ExtResource("4_q7swc")]
+position = Vector2(400, 340)
