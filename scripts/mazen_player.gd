@@ -83,8 +83,7 @@ func _physics_process(delta: float) -> void:
 				_play_state("Run")
 			else:
 				_play_state("Idle")
-
-
+	
 	move_and_slide()
 
 
@@ -102,7 +101,6 @@ func _start_attack(attack_name: String) -> void:
 func end_attack():
 	attacking = false
 	current_attack = ""
-	print("End Attacking")
 
 func take_hit() -> void:
 	attacking = false
