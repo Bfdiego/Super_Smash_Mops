@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Super_Smash_Mops"
-run/main_scene="uid://f1f3ktkwemxk"
+run/main_scene="uid://bsmdhe4tdv60d"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 

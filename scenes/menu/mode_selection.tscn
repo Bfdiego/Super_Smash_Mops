@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://qylpo1dbyyfg"]
+
+[ext_resource type="Script" uid="uid://cw4wufo4ideni" path="res://scripts/mode_selection.gd" id="1_6mb1l"]
+[ext_resource type="Texture2D" uid="uid://cxkod2iek3dgf" path="res://assets/images/upb_campus.jpeg" id="2_u61su"]
+[ext_resource type="Texture2D" uid="uid://bu1p1kab5rxlo" path="res://assets/multi_player.png" id="3_7yco3"]
+[ext_resource type="Texture2D" uid="uid://drlmn73alpqms" path="res://assets/selection/single_player_selection.png" id="3_u61su"]
+[ext_resource type="Texture2D" uid="uid://c6nnqna3xs5cb" path="res://assets/selection/multi_player_selection.png" id="4_7yco3"]
+[ext_resource type="Texture2D" uid="uid://emmwvm76i0hi" path="res://assets/single_player.png" id="4_uxqry"]
+
+[node name="ModeSelection" type="Node2D"]
+script = ExtResource("1_6mb1l")
+
+[node name="Campus_Background" type="TextureRect" parent="."]
+modulate = Color(0.1025, 0.200833, 0.25, 1)
+offset_right = 1921.0
+offset_bottom = 1081.0
+texture = ExtResource("2_u61su")
+
+[node name="MultiPlayer2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1407, 882)
+texture = ExtResource("3_7yco3")
+
+[node name="MultiPlayer" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(564.5, 880)
+scale = Vector2(1.11621, 1)
+texture = ExtResource("3_7yco3")
+
+[node name="SinglePlayer" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1200, 1055)
+texture = ExtResource("4_uxqry")
+
+[node name="Single_Player_Button" type="TextureButton" parent="."]
+modulate = Color(0.17, 0.17, 0.17, 1)
+offset_right = 1024.0
+offset_bottom = 1024.0
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(510, 510)
+texture_normal = ExtResource("3_u61su")
+
+[node name="Multi_Player_Button" type="TextureButton" parent="."]
+offset_left = 900.0
+offset_right = 1924.0
+offset_bottom = 1024.0
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(510, 510)
+texture_normal = ExtResource("4_7yco3")
+
+[connection signal="mouse_entered" from="Single_Player_Button" to="." method="_on_single_player_button_mouse_entered"]
+[connection signal="mouse_exited" from="Single_Player_Button" to="." method="_on_single_player_button_mouse_exited"]
+[connection signal="pressed" from="Single_Player_Button" to="." method="_on_single_player_button_pressed"]
+[connection signal="mouse_entered" from="Multi_Player_Button" to="." method="_on_multi_player_button_mouse_entered"]
+[connection signal="mouse_exited" from="Multi_Player_Button" to="." method="_on_multi_player_button_mouse_exited"]
+[connection signal="pressed" from="Multi_Player_Button" to="." method="_on_multi_player_button_pressed"]
