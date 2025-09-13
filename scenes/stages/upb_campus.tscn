@@ -49,7 +49,6 @@ visible = false
 position = Vector2(389, 543)
 
 [node name="MazenPlayer" parent="." instance=ExtResource("4_q7swc")]
-visible = false
 position = Vector2(400, 340)
 
 [node name="DiegoPlayer" parent="." instance=ExtResource("5_5sfl0")]
