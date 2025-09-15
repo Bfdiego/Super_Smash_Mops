@@ -172,11 +172,11 @@ func respawn() -> void:
 
 func _on_hurt_box_area_entered(area: Area2D) -> void:
 	if area.is_in_group("PlayerHitBox") or true:
-		var attacker = area.get_owner()  # mejor que get_parent(), apunta al personaje
+		var attacker = area.get_owner()
 		if attacker != self:
 			var force := 400.0
 			if area.has_meta("force"):
-				force = area.get_meta("force")  # si cada hitbox guarda su fuerza
+				force = area.get_meta("force")
 			
 			print("Fui golpeado por ", attacker.name, " con fuerza ", force)
 			apply_knockback(attacker.flip_node.scale.x, force)

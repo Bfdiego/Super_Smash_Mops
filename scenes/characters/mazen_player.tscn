@@ -65,7 +65,7 @@ tracks/3/path = NodePath(".")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.4),
+"times": PackedFloat32Array(0.39),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -119,7 +119,7 @@ tracks/3/path = NodePath(".")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.6),
+"times": PackedFloat32Array(0.59),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -185,7 +185,7 @@ tracks/4/path = NodePath(".")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.6),
+"times": PackedFloat32Array(0.59),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -548,7 +548,7 @@ states/Jump/position = Vector2(259.5, 243.875)
 states/Run/node = SubResource("AnimationNodeAnimation_x6e5a")
 states/Run/position = Vector2(521, 89.5)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_ctg1w"), "Idle", "Run", SubResource("AnimationNodeStateMachineTransition_x6e5a"), "Run", "Idle", SubResource("AnimationNodeStateMachineTransition_m1pb4"), "Idle", "Jump", SubResource("AnimationNodeStateMachineTransition_m8koy"), "Jump", "Idle", SubResource("AnimationNodeStateMachineTransition_xwrj6"), "Run", "Jump", SubResource("AnimationNodeStateMachineTransition_hlp1u"), "Run", "Attack1", SubResource("AnimationNodeStateMachineTransition_yf7gv"), "Run", "Attack2", SubResource("AnimationNodeStateMachineTransition_lgey2"), "Attack1", "Idle", SubResource("AnimationNodeStateMachineTransition_2pc2i"), "Attack2", "Idle", SubResource("AnimationNodeStateMachineTransition_u8h8t"), "Attack3", "Jump", SubResource("AnimationNodeStateMachineTransition_iryow"), "Jump", "Attack3", SubResource("AnimationNodeStateMachineTransition_uksc6"), "Idle", "Attack2", SubResource("AnimationNodeStateMachineTransition_ggi4h"), "Idle", "Attack1", SubResource("AnimationNodeStateMachineTransition_b6emp"), "Hit", "Idle", SubResource("AnimationNodeStateMachineTransition_5gsve"), "Jump", "Hit", SubResource("AnimationNodeStateMachineTransition_nr2qq"), "Idle", "Hit", SubResource("AnimationNodeStateMachineTransition_30we2"), "Run", "Hit", SubResource("AnimationNodeStateMachineTransition_2mapd")]
-graph_offset = Vector2(20, 60)
+graph_offset = Vector2(-78.7, -17.25)
 
 [node name="MazenPlayer" type="CharacterBody2D"]
 collision_mask = 2
