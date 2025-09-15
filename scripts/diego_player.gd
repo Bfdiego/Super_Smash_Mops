@@ -5,7 +5,6 @@ extends CharacterBody2D
 
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var state_machine = $AnimationTree.get("parameters/playback")
-@onready var collision_floor = $CollisionFloor
 @onready var flip_node = $FlipNode
 
 var in_air: bool = false
@@ -14,7 +13,8 @@ var current_attack: String = ""
 var last_state: String = ""
 var player_one: bool = true
 var flip_offset = Vector2(3, 0) 
-var flip_offset_2 = Vector2(70, 0) 
+var flip_offset_2 = Vector2(40, 0) 
+var flip_offset_p = Vector2(40, 0) 
 
 var key_left: String = ""
 var key_right: String = ""
@@ -29,6 +29,7 @@ var knockback_force: float = 800.0
 
 var hit_timer: float = 0.0
 var hit_duration: float = 0.4
+var jump_buffer: bool = false
 
 func _ready() -> void:
 	if player_one:
@@ -47,23 +48,35 @@ func _ready() -> void:
 	respawn_point = global_position
 	$FlipNode/HitBox.set_meta("force", 400.0)
 	$FlipNode/HitBox2.set_meta("force", 900.0)
+	$FlipNode/HitBox.set_meta("name", "Diego")
+	$FlipNode/HitBox2.set_meta("name", "Diego")
 
 func _physics_process(delta: float) -> void:
 	if global_position.y > 1200:
 		die()
 	
+	if hit_timer > 0:
+		hit_timer -= delta
+		velocity.y += gravity * delta
+		move_and_slide()
+		return
+	
 	if not is_on_floor():
 		velocity.y += gravity * delta
 		if not in_air:
 			in_air = true
-			_play_state("Jump")
+			if not attacking and hit_timer <= 0:
+				enter_jump_state()
 	else:
-		in_air = false
+		if in_air:
+			in_air = false
+			jump_buffer = false
 	
 	if Input.is_action_just_pressed(key_jump) and is_on_floor():
 		velocity.y = jump_force
 		in_air = true
-		_play_state("Jump")
+		if not attacking and hit_timer <= 0:
+			enter_jump_state()
 	
 	if not attacking:
 		if in_air and (Input.is_action_just_pressed(key_attack1) or Input.is_action_just_pressed(key_attack2)):
@@ -80,28 +93,21 @@ func _physics_process(delta: float) -> void:
 		if direction < 0:
 			flip_node.scale.x = -1
 			flip_node.position.x = flip_offset_2.x
-			collision_floor.scale.x = -1
-			collision_floor.position.x = flip_offset_2.x
 			$Sprite2D.scale.x = abs($Sprite2D.scale.x) * -1
+			$Sprite2D.position.x = -flip_offset.x
 		elif direction > 0:
 			flip_node.scale.x = 1
 			flip_node.position.x = -flip_offset.x
-			collision_floor.scale.x = 1
-			collision_floor.position.x = -flip_offset.x
 			$Sprite2D.scale.x = abs($Sprite2D.scale.x) 
+			$Sprite2D.position.x = flip_offset_p.x
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 
-	if hit_timer > 0:
-		hit_timer -= delta
-	else:
-		if not attacking:
-			if in_air:
-				_play_state("Jump")
-			elif velocity.x != 0:
-				_play_state("Run")
-			else:
-				_play_state("Idle")
+	if not attacking and not in_air and hit_timer <= 0:
+		if velocity.x != 0:
+			_play_state("Run")
+		else:
+			_play_state("Idle")
 	
 	move_and_slide()
 
@@ -128,6 +134,9 @@ func _start_attack(attack_name: String) -> void:
 func end_attack():
 	attacking = false
 	current_attack = ""
+	if in_air:
+		jump_buffer = false
+		enter_jump_state()
 
 func take_hit() -> void:
 	attacking = false
@@ -179,4 +188,15 @@ func _on_hurt_box_area_entered(area: Area2D) -> void:
 				force = area.get_meta("force")
 			
 			print("Fui golpeado por ", attacker.name, " con fuerza ", force)
-			apply_knockback(attacker.flip_node.scale.x, force)
+			var name
+			if area.has_meta("name"):
+				name = area.get_meta("name")
+				if name == "Mazen":
+					apply_knockback(attacker.flip_node.scale.x, force)
+				if name == "Agui":
+					apply_knockback(attacker.flip_node.scale.x, force)
+
+func enter_jump_state() -> void:
+	if not attacking and not jump_buffer:
+		_play_state("Jump")
+		jump_buffer = true

@@ -5,7 +5,6 @@ extends CharacterBody2D
 
 var gravity: float = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var state_machine = $AnimationTree.get("parameters/playback")
-@onready var collision_floor = $CollisionFloor
 @onready var flip_node = $FlipNode
 
 var attacking: bool = false
@@ -21,6 +20,15 @@ var key_jump: String = ""
 var key_attack1: String = ""
 var key_attack2: String = ""
 
+var jump_buffer: bool = false
+var hit_timer: float = 0.0
+var hit_duration: float = 0.4
+
+var lives: int = 3
+var respawn_point: Vector2 = Vector2.ZERO
+var is_invulnerable: bool = false
+var knockback_force: float = 800.0
+
 func _ready() -> void:
 	if player_one:
 		key_left = "left_p1"
@@ -34,20 +42,44 @@ func _ready() -> void:
 		key_jump = "jump_p2"
 		key_attack1 = "attack1_p2"
 		key_attack2 = "attack2_p2"
+	
+	respawn_point = global_position
+	$FlipNode/HitBox.set_meta("force", 400.0)
+	$FlipNode/HitBox2.set_meta("force", 900.0)
+	$FlipNode/HitBox.set_meta("name", "Agui")
+	$FlipNode/HitBox2.set_meta("name", "Agui")
 
 func _physics_process(delta: float) -> void:
+	if global_position.y > 1200:
+		die()
+
+	if hit_timer > 0:
+		hit_timer -= delta
+		velocity.y += gravity * delta
+		move_and_slide()
+		return
+	
 	if not is_on_floor():
 		velocity.y += gravity * delta
 		if not in_air:
 			in_air = true
-			_play_state("Jump")
+			if not attacking and hit_timer <= 0:
+				enter_jump_state()
 	else:
-		in_air = false
+		if in_air:
+			in_air = false
+			jump_buffer = false
+			if not attacking and hit_timer <= 0:
+				if velocity.x != 0:
+					_play_state("Run")
+				else:
+					_play_state("Idle")
 	
 	if Input.is_action_just_pressed(key_jump) and is_on_floor():
 		velocity.y = jump_force
 		in_air = true
-		_play_state("Jump")
+		if not attacking and hit_timer <= 0:
+			enter_jump_state()
 	
 	if not attacking:
 		if in_air and (Input.is_action_just_pressed(key_attack1) or Input.is_action_just_pressed(key_attack2)):
@@ -60,34 +92,24 @@ func _physics_process(delta: float) -> void:
 	var direction = Input.get_axis(key_left, key_right)
 	if direction != 0:
 		velocity.x = direction * speed
-		
 		if direction < 0:
 			flip_node.scale.x = 1
 			flip_node.position.x = -flip_offset.x
-			collision_floor.scale.x = 1
 			$Sprite2D.scale.x = abs($Sprite2D.scale.x)
 		elif direction > 0:
 			flip_node.scale.x = -1
 			flip_node.position.x = flip_offset.x
-			collision_floor.scale.x = -1
-			collision_floor.position.x = flip_offset.x
 			$Sprite2D.scale.x = abs($Sprite2D.scale.x) * -1
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 
-	if not attacking:
-		if in_air:
-			_play_state("Jump")
+	if not attacking and not in_air and hit_timer <= 0:
+		if velocity.x != 0:
+			_play_state("Run")
 		else:
-			if direction != 0:
-				_play_state("Run")
-			else:
-				_play_state("Idle")
-
+			_play_state("Idle")
 
 	move_and_slide()
-
-
 
 func _play_state(state: String) -> void:
 	if state != last_state:
@@ -98,12 +120,75 @@ func _start_attack(attack_name: String) -> void:
 	attacking = true
 	current_attack = attack_name
 	_play_state(attack_name)
+	match attack_name:
+		"Attack1":
+			$FlipNode/HitBox.set_meta("force", 400.0)
+		"Attack2":
+			$FlipNode/HitBox.set_meta("force", 600.0)
+		"Attack3":
+			$FlipNode/HitBox2.set_meta("force", 900.0)
+	print("Lanzó ", attack_name)
 
 func end_attack():
 	attacking = false
 	current_attack = ""
+	if in_air:
+		jump_buffer = false
+		enter_jump_state()
 
 func take_hit() -> void:
 	attacking = false
 	current_attack = ""
 	_play_state("Hit")
+	hit_timer = hit_duration
+	print("Jugador recibió hit")
+
+func apply_knockback(from_direction: int, attack_force: float) -> void:
+	if is_invulnerable:
+		print("Golpe ignorado por invulnerabilidad")
+		return
+	var multiplier = (4 - lives)
+	var total_force = attack_force + knockback_force * multiplier
+	velocity.x = from_direction * total_force
+	velocity.y = -300
+	print("Recibió knockback:", total_force, " | Vidas:", lives)
+	take_hit()
+
+func die() -> void:
+	lives -= 1
+	print("Jugador " + ("1" if player_one else "2") + " murió. Vidas restantes: " + str(lives))
+	if lives <= 0:
+		print("Jugador" + ("1" if player_one else "2") + "fue eliminado!")
+		queue_free()
+	else:
+		respawn()
+
+func respawn() -> void:
+	global_position = respawn_point
+	velocity = Vector2.ZERO
+	is_invulnerable = true
+	print("Jugador" + ("1" if player_one else "2") + "respawneó con invulnerabilidad")
+	await get_tree().create_timer(2.0).timeout
+	is_invulnerable = false
+	print("Invulnerabilidad terminada")
+
+func _on_hurt_box_area_entered(area: Area2D) -> void:
+	if area.is_in_group("PlayerHitBox") or true:
+		var attacker = area.get_owner()
+		if attacker != self:
+			var force := 400.0
+			if area.has_meta("force"):
+				force = area.get_meta("force")
+			print("Fui golpeado por ", attacker.name, " con fuerza ", force)
+			var name
+			if area.has_meta("name"):
+				name = area.get_meta("name")
+				if name == "Mazen":
+					apply_knockback(-attacker.flip_node.scale.x, force)
+				if name == "Diego":
+					apply_knockback(attacker.flip_node.scale.x, force)
+
+func enter_jump_state() -> void:
+	if not attacking and not jump_buffer:
+		_play_state("Jump")
+		jump_buffer = true
