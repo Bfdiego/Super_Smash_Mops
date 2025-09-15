@@ -33,6 +33,9 @@ var hit_timer: float = 0.0
 var hit_duration: float = 0.4
 var jump_buffer: bool = false
 
+@export var max_air_jumps: int = 1
+var air_jumps_left: int = 0
+
 func _ready() -> void:
 	if player_one:
 		key_left = "left_p1"
@@ -70,6 +73,7 @@ func _physics_process(delta: float) -> void:
 			if not attacking and hit_timer <= 0:
 				enter_jump_state()
 	else:
+		air_jumps_left = max_air_jumps
 		if in_air:
 			in_air = false
 			jump_buffer = false
@@ -79,11 +83,17 @@ func _physics_process(delta: float) -> void:
 				else:
 					_play_state("Idle")
 	
-	if Input.is_action_just_pressed(key_jump) and is_on_floor():
-		velocity.y = jump_force
-		in_air = true
-		if not attacking and hit_timer <= 0:
-			enter_jump_state()
+	if Input.is_action_just_pressed(key_jump):
+		if is_on_floor():
+			velocity.y = jump_force
+			in_air = true
+			if not attacking and hit_timer <= 0:
+				enter_jump_state()
+		elif air_jumps_left > 0:
+			air_jumps_left -= 1
+			velocity.y = jump_force
+			if not attacking and hit_timer <= 0:
+				_play_state("Jump")
 	
 	if not attacking:
 		if in_air and (Input.is_action_just_pressed(key_attack1) or Input.is_action_just_pressed(key_attack2)):

@@ -67,11 +67,11 @@ position = Vector2(994, 117)
 shape = SubResource("RectangleShape2D_tyeeq")
 
 [node name="DiegoPlayer" parent="." instance=ExtResource("4_blmu4")]
+process_mode = 4
+visible = false
 position = Vector2(472, 229)
 
 [node name="AguiPlayer" parent="." instance=ExtResource("4_qprlw")]
-process_mode = 4
-visible = false
 position = Vector2(480, 288)
 
 [node name="MazenPlayer" parent="." instance=ExtResource("5_gi4bc")]
