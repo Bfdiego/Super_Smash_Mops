@@ -106,11 +106,24 @@ shape = SubResource("RectangleShape2D_q7swc")
 
 [node name="AguiPlayer" parent="." instance=ExtResource("3_bjfve")]
 process_mode = 4
-visible = false
-position = Vector2(389, 543)
+position = Vector2(401, 500)
+
+[node name="AguiPlayer2" parent="." instance=ExtResource("3_bjfve")]
+process_mode = 4
+position = Vector2(1506, 444)
 
 [node name="MazenPlayer" parent="." instance=ExtResource("4_q7swc")]
-position = Vector2(1533, 482)
+process_mode = 4
+position = Vector2(394, 501)
 
 [node name="DiegoPlayer" parent="." instance=ExtResource("5_5sfl0")]
-position = Vector2(477, 490)
+process_mode = 4
+position = Vector2(408, 501)
+
+[node name="DiegoPlayer2" parent="." instance=ExtResource("5_5sfl0")]
+process_mode = 4
+position = Vector2(1513, 451)
+
+[node name="MazenPlayer2" parent="." instance=ExtResource("4_q7swc")]
+process_mode = 4
+position = Vector2(1500, 446)
