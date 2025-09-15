@@ -138,7 +138,7 @@ func apply_knockback(from_direction: int, attack_force: float) -> void:
 		print("Golpe ignorado por invulnerabilidad")
 		return
 
-	var multiplier = (4 - lives) # mientras menos vidas, más vulnerable
+	var multiplier = (4 - lives)
 	var total_force = attack_force + knockback_force * multiplier
 
 	velocity.x = from_direction * total_force 
@@ -153,7 +153,7 @@ func die() -> void:
 
 	if lives <= 0:
 		print("Jugador" + ("1" if player_one else "2") + "fue eliminado!")
-		queue_free() # o lo que quieras para desaparecer al personaje
+		queue_free()
 	else:
 		respawn()
 
