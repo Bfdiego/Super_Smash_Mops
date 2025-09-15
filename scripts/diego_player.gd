@@ -22,6 +22,11 @@ var key_jump: String = ""
 var key_attack1: String = ""
 var key_attack2: String = ""
 
+var lives: int = 3
+var respawn_point: Vector2 = Vector2.ZERO
+var is_invulnerable: bool = false
+var knockback_force: float = 800.0
+
 func _ready() -> void:
 	if player_one:
 		key_left = "left_p1"
@@ -35,8 +40,15 @@ func _ready() -> void:
 		key_jump = "jump_p2"
 		key_attack1 = "attack1_p2"
 		key_attack2 = "attack2_p2"
+	
+	respawn_point = global_position
+	$FlipNode/HitBox.set_meta("force", 400.0)
+	$FlipNode/HitBox2.set_meta("force", 900.0)
 
 func _physics_process(delta: float) -> void:
+	if global_position.y > 1200:
+		die()
+	
 	if not is_on_floor():
 		velocity.y += gravity * delta
 		if not in_air:
@@ -85,11 +97,8 @@ func _physics_process(delta: float) -> void:
 				_play_state("Run")
 			else:
 				_play_state("Idle")
-
-
+	
 	move_and_slide()
-
-
 
 func _play_state(state: String) -> void:
 	if state != last_state:
@@ -100,6 +109,16 @@ func _start_attack(attack_name: String) -> void:
 	attacking = true
 	current_attack = attack_name
 	_play_state(attack_name)
+	
+	match attack_name:
+		"Attack1":
+			$FlipNode/HitBox.set_meta("force", 400.0)
+		"Attack2":
+			$FlipNode/HitBox.set_meta("force", 600.0)
+		"Attack3":
+			$FlipNode/HitBox2.set_meta("force", 900.0)
+	
+	print("Lanzó ", attack_name, " con fuerza ", $FlipNode/HitBox.get_meta("force"))
 
 func end_attack():
 	attacking = false
@@ -109,3 +128,49 @@ func take_hit() -> void:
 	attacking = false
 	current_attack = ""
 	_play_state("Hit")
+
+func apply_knockback(from_direction: int, attack_force: float) -> void:
+	if is_invulnerable:
+		print("Golpe ignorado por invulnerabilidad")
+		return
+
+	var multiplier = (4 - lives) # mientras menos vidas, más vulnerable
+	var total_force = attack_force + knockback_force * multiplier
+
+	velocity.x = from_direction * total_force * -1
+	velocity.y = -300
+
+	print("Recibió knockback:", total_force, " | Vidas:", lives)
+	take_hit()
+
+func die() -> void:
+	lives -= 1
+	print("Jugador " + ("1" if player_one else "2") + " murió. Vidas restantes: " + str(lives))
+
+	if lives <= 0:
+		print("Jugador" + ("1" if player_one else "2") + "fue eliminado!")
+		queue_free() # o lo que quieras para desaparecer al personaje
+	else:
+		respawn()
+
+func respawn() -> void:
+	global_position = respawn_point
+	velocity = Vector2.ZERO
+	is_invulnerable = true
+	print("Jugador" + ("1" if player_one else "2") + "respawneó con invulnerabilidad")
+
+	await get_tree().create_timer(2.0).timeout
+	is_invulnerable = false
+	print("Invulnerabilidad terminada")
+
+
+func _on_hurt_box_area_entered(area: Area2D) -> void:
+	if area.is_in_group("PlayerHitBox") or true:
+		var attacker = area.get_owner()  # mejor que get_parent(), apunta al personaje
+		if attacker != self:
+			var force := 400.0
+			if area.has_meta("force"):
+				force = area.get_meta("force")  # si cada hitbox guarda su fuerza
+			
+			print("Fui golpeado por ", attacker.name, " con fuerza ", force)
+			apply_knockback(attacker.flip_node.scale.x, force)
