@@ -27,6 +27,9 @@ var respawn_point: Vector2 = Vector2.ZERO
 var is_invulnerable: bool = false
 var knockback_force: float = 800.0
 
+var hit_timer: float = 0.0
+var hit_duration: float = 0.4
+
 func _ready() -> void:
 	if player_one:
 		key_left = "left_p1"
@@ -87,11 +90,13 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, speed)
 
-	if not attacking:
-		if in_air:
-			_play_state("Jump")
-		else:
-			if direction != 0:
+	if hit_timer > 0:
+		hit_timer -= delta
+	else:
+		if not attacking:
+			if in_air:
+				_play_state("Jump")
+			elif velocity.x != 0:
 				_play_state("Run")
 			else:
 				_play_state("Idle")
@@ -126,6 +131,7 @@ func take_hit() -> void:
 	attacking = false
 	current_attack = ""
 	_play_state("Hit")
+	hit_timer = hit_duration
 
 func apply_knockback(from_direction: int, attack_force: float) -> void:
 	if is_invulnerable:
