@@ -6,10 +6,10 @@ extends Node2D
 @onready var campus_background = $Campus_Background
 
 func _on_campus_selection_button_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://scenes/stages/upb_campus.tscn")
 
 func _on_postgraduate_selection_button_pressed() -> void:
-	pass # Replace with function body.
+	get_tree().change_scene_to_file("res://scenes/stages/upb_postgraduate.tscn")
 
 #Hovering
 func _on_campus_selection_button_mouse_entered() -> void:
