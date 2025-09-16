@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://f1f3ktkwemxk"]
+[gd_scene load_steps=14 format=3 uid="uid://f1f3ktkwemxk"]
 
 [ext_resource type="Texture2D" uid="uid://cxkod2iek3dgf" path="res://assets/images/upb_campus.jpeg" id="1_3vog7"]
+[ext_resource type="Script" uid="uid://8u0vn07bm3ai" path="res://scripts/upb_campus.gd" id="1_i6hwf"]
 [ext_resource type="Texture2D" uid="uid://broqmci5d4w8t" path="res://assets/images/platform-cloud.png" id="2_1ojnv"]
 [ext_resource type="Texture2D" uid="uid://dlbxrateho43m" path="res://assets/images/platform-grass.png" id="2_bjfve"]
 [ext_resource type="PackedScene" uid="uid://dvbpse3xbc86v" path="res://scenes/characters/agui_player.tscn" id="3_bjfve"]
@@ -16,6 +17,7 @@
 size = Vector2(262.375, 60.125)
 
 [node name="UpbCampus" type="Node2D"]
+script = ExtResource("1_i6hwf")
 
 [node name="Background" type="TextureRect" parent="."]
 offset_right = 1921.0

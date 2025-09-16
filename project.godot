@@ -17,8 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-ThemeSong="*res://scenes/menu/theme_song.tscn"
 GameManager="*res://scripts/GameManager.gd"
+ThemeSong="*res://scenes/menu/theme_song.tscn"
 
 [display]
 
