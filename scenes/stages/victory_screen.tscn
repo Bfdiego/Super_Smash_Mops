@@ -1,6 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://c2pea0ohjqxi5"]
+[gd_scene load_steps=9 format=3 uid="uid://b4j62rrc13wde"]
 
-[ext_resource type="Script" uid="uid://ba4a7icabujfo" path="res://scripts/victory_screen.gd" id="1_nxaog"]
+[ext_resource type="Script" path="res://scripts/victory_screen.gd" id="1_nxaog"]
 [ext_resource type="Texture2D" uid="uid://blmu3ogum7hnr" path="res://assets/images/winner_background.jpeg" id="2_afr1r"]
 [ext_resource type="PackedScene" uid="uid://dvbpse3xbc86v" path="res://scenes/characters/agui_player.tscn" id="3_x76ma"]
 [ext_resource type="PackedScene" uid="uid://b7st2qy3hve72" path="res://scenes/characters/diego_player.tscn" id="4_ms0r3"]
@@ -30,6 +30,7 @@ offset_bottom = 1081.0
 texture = ExtResource("2_afr1r")
 
 [node name="Agui_Winner" parent="." instance=ExtResource("3_x76ma")]
+visible = false
 position = Vector2(482, 611)
 scale = Vector2(5, 5)
 motion_mode = 1
@@ -47,6 +48,7 @@ scale = Vector2(5, 5)
 motion_mode = 1
 
 [node name="Diego_Loser" parent="." instance=ExtResource("4_ms0r3")]
+visible = false
 position = Vector2(1388, 695)
 scale = Vector2(3, 3)
 motion_mode = 1

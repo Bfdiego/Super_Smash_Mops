@@ -12,6 +12,7 @@ var attacking: bool = false
 var current_attack: String = ""
 var last_state: String = ""
 var in_air: bool = false
+signal player_eliminated(is_player_one)
 signal lives_changed(current_lives, is_player_one)
 @export var is_player_one: bool
 var flip_offset = Vector2(70, 0) 
@@ -192,6 +193,7 @@ func die() -> void:
 	emit_signal("lives_changed", current_lives, is_player_one)
 	if current_lives <= 0:
 		print("Jugador" + ("1" if is_player_one else "2") + "fue eliminado!")
+		emit_signal("player_eliminated", is_player_one)
 		queue_free()
 	else:
 		respawn()

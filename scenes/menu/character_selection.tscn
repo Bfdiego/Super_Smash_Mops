@@ -1,5 +1,4 @@
 [gd_scene load_steps=18 format=3 uid="uid://xkw38rwej1lo"]
-[gd_scene load_steps=14 format=3 uid="uid://fhx2g50jntn3"]
 
 [ext_resource type="Script" uid="uid://dhw1gnu4u37lj" path="res://scripts/character_selection.gd" id="1_p436k"]
 [ext_resource type="Texture2D" uid="uid://cxkod2iek3dgf" path="res://assets/images/upb_campus.jpeg" id="2_nj78t"]

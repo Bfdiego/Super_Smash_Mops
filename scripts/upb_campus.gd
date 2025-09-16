@@ -57,6 +57,7 @@ func _ready() -> void:
 		if p == null:
 			continue
 		p.connect("lives_changed", Callable(self, "update_hearts"))
+		p.connect("player_eliminated", self, "_on_player_eliminated")
 		
 func _process(delta: float) -> void:
 	var quit = Input.is_action_just_pressed("return")
@@ -77,3 +78,13 @@ func update_hearts(current_lives: int, is_player_one: bool) -> void:
 func _update_player_hearts(lives: int, hearts: Array) -> void:
 	for i in range(hearts.size()):
 		hearts[i].visible = i < lives
+
+func _on_player_eliminated(is_player_one: bool) -> void:
+	print("Jugador eliminado, cambiando escena...")
+	var timer = Timer.new()
+	timer.wait_time = 2.0
+	timer.one_shot = true
+	add_child(timer)
+	timer.start()
+	await timer.timeout
+	get_tree().change_scene_to_file("res://scenes/game_over.tscn")
