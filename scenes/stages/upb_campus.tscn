@@ -308,3 +308,7 @@ offset_bottom = 132.0
 texture = ExtResource("11_jv6kl")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="BattleSong" type="Node2D" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="BattleSong"]
