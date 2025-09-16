@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://dqnit4r01sn0l"]
 
-[ext_resource type="Script" uid="uid://c2u7xdos341b8" path="res://scenes/stages/upb_postgraduate.gd" id="1_0nyr2"]
+[ext_resource type="Script" uid="uid://c2u7xdos341b8" path="res://scripts/upb_postgraduate.gd" id="1_0nyr2"]
 [ext_resource type="Texture2D" uid="uid://bjiwlixhrfo42" path="res://assets/images/upb_postgraduate.jpeg" id="1_v56jc"]
 [ext_resource type="Texture2D" uid="uid://c1anvf1rb5jk8" path="res://assets/images/platform-cement.png" id="2_tyeeq"]
 [ext_resource type="Texture2D" uid="uid://ckgrfoah22eit" path="res://assets/images/plarform-main-rock.png" id="3_qprlw"]
