@@ -21,3 +21,7 @@ offset_bottom = 1238.0
 scale = Vector2(0.8, 0.8)
 pivot_offset = Vector2(700, 700)
 texture_normal = ExtResource("3_037ec")
+
+[connection signal="mouse_entered" from="Logo" to="." method="_on_logo_mouse_entered"]
+[connection signal="mouse_exited" from="Logo" to="." method="_on_logo_mouse_exited"]
+[connection signal="pressed" from="Logo" to="." method="_on_logo_pressed"]
