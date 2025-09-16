@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://bsmdhe4tdv60d"]
 
-[ext_resource type="Script" path="res://scripts/menu.gd" id="1_e0arn"]
+[ext_resource type="Script" uid="uid://cvxn7dww2c1by" path="res://scripts/menu.gd" id="1_e0arn"]
 [ext_resource type="Texture2D" uid="uid://cxkod2iek3dgf" path="res://assets/images/upb_campus.jpeg" id="1_klgdb"]
 [ext_resource type="Texture2D" uid="uid://bpsbpx07rv8jl" path="res://assets/menu-logo.png" id="3_037ec"]
 
@@ -21,7 +21,3 @@ offset_bottom = 1238.0
 scale = Vector2(0.8, 0.8)
 pivot_offset = Vector2(700, 700)
 texture_normal = ExtResource("3_037ec")
-
-[connection signal="mouse_entered" from="Logo" to="." method="_on_logo_mouse_entered"]
-[connection signal="mouse_exited" from="Logo" to="." method="_on_logo_mouse_exited"]
-[connection signal="pressed" from="Logo" to="." method="_on_logo_pressed"]

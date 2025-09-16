@@ -29,7 +29,6 @@ func _on_mazen_selection_button_pressed() -> void:
 func _on_random_selection_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/menu/stage_selection.tscn")
 
-
 #Hovering
 func _on_agui_selection_button_mouse_entered() -> void:
 	agui_selection_button.scale = Vector2(0.3, 0.3)
