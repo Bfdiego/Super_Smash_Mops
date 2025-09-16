@@ -131,8 +131,7 @@ position = Vector2(1513, 451)
 
 [node name="MazenPlayer2" parent="." instance=ExtResource("4_q7swc")]
 process_mode = 4
-position = Vector2(1500, 446)
-position = Vector2(477, 490)
+position = Vector2(1498, 445)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

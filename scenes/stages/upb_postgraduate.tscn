@@ -1,10 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://dqnit4r01sn0l"]
+[gd_scene load_steps=13 format=3 uid="uid://dqnit4r01sn0l"]
 
 [ext_resource type="Texture2D" uid="uid://bjiwlixhrfo42" path="res://assets/images/upb_postgraduate.jpeg" id="1_v56jc"]
 [ext_resource type="Texture2D" uid="uid://c1anvf1rb5jk8" path="res://assets/images/platform-cement.png" id="2_tyeeq"]
 [ext_resource type="Texture2D" uid="uid://ckgrfoah22eit" path="res://assets/images/plarform-main-rock.png" id="3_qprlw"]
+[ext_resource type="PackedScene" uid="uid://b7st2qy3hve72" path="res://scenes/characters/diego_player.tscn" id="4_blmu4"]
 [ext_resource type="Texture2D" uid="uid://cetr7iaj5egbq" path="res://assets/selection/diego_selection.png" id="4_gf8aw"]
+[ext_resource type="PackedScene" uid="uid://dvbpse3xbc86v" path="res://scenes/characters/agui_player.tscn" id="4_qprlw"]
 [ext_resource type="Texture2D" uid="uid://bwt0jojo1ykhn" path="res://assets/selection/mazen_selection.png" id="5_d6102"]
+[ext_resource type="PackedScene" uid="uid://bnn8uw247sqkf" path="res://scenes/characters/mazen_player.tscn" id="5_gi4bc"]
 [ext_resource type="Texture2D" uid="uid://djy82f4jarrlq" path="res://assets/selection/agui_selection.png" id="6_kbu67"]
 [ext_resource type="Texture2D" uid="uid://bekl15acmfj7j" path="res://assets/empty heart.png" id="7_da6cf"]
 [ext_resource type="Texture2D" uid="uid://cuxyvl2ylg5ht" path="res://assets/heart pixel art 254x254.png" id="8_0nyr2"]
@@ -68,33 +71,7 @@ shape = SubResource("RectangleShape2D_tyeeq")
 position = Vector2(994, 117)
 shape = SubResource("RectangleShape2D_tyeeq")
 
-[node name="DiegoPlayer" parent="." instance=ExtResource("4_blmu4")]
-process_mode = 4
-position = Vector2(431, 312)
-
-[node name="DiegoPlayer2" parent="." instance=ExtResource("4_blmu4")]
-process_mode = 4
-position = Vector2(1583, 360)
-
-[node name="AguiPlayer" parent="." instance=ExtResource("4_qprlw")]
-process_mode = 4
-position = Vector2(426, 306)
-
-[node name="AguiPlayer2" parent="." instance=ExtResource("4_qprlw")]
-process_mode = 4
-position = Vector2(1574, 354)
-
-[node name="MazenPlayer" parent="." instance=ExtResource("5_gi4bc")]
-process_mode = 4
-position = Vector2(417, 309)
-
-[node name="MazenPlayer2" parent="." instance=ExtResource("5_gi4bc")]
-process_mode = 4
-position = Vector2(1567, 355)
-position = Vector2(485, 115)
-shape = SubResource("RectangleShape2D_tyeeq")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Plataforms/Plataform3"]
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Plataforms/Plataform3"]
 position = Vector2(909, 114)
 shape = SubResource("RectangleShape2D_tyeeq")
 
@@ -273,3 +250,27 @@ offset_bottom = 132.0
 texture = ExtResource("8_0nyr2")
 expand_mode = 1
 stretch_mode = 5
+
+[node name="AguiPlayer" parent="." instance=ExtResource("4_qprlw")]
+process_mode = 4
+position = Vector2(404, 292)
+
+[node name="AguiPlayer2" parent="." instance=ExtResource("4_qprlw")]
+process_mode = 4
+position = Vector2(1589, 367)
+
+[node name="MazenPlayer" parent="." instance=ExtResource("5_gi4bc")]
+process_mode = 4
+position = Vector2(397, 293)
+
+[node name="DiegoPlayer" parent="." instance=ExtResource("4_blmu4")]
+process_mode = 4
+position = Vector2(411, 293)
+
+[node name="DiegoPlayer2" parent="." instance=ExtResource("4_blmu4")]
+process_mode = 4
+position = Vector2(1594, 375)
+
+[node name="MazenPlayer2" parent="." instance=ExtResource("5_gi4bc")]
+process_mode = 4
+position = Vector2(1576, 373)
