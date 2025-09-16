@@ -115,15 +115,13 @@ func lock_in_selection(player: int, character: String) -> void:
 	if GameManager.player_1_selection != "" and GameManager.player_2_selection != "":
 		await get_tree().create_timer(2.0).timeout
 		get_tree().change_scene_to_file("res://scenes/menu/stage_selection.tscn")
+
 func _show_hover_player(player: int, character: String) -> void:
 	var selected = ""
 	if player == 1:
 		selected = GameManager.player_1_selection
 	elif player == 2:
 		selected = GameManager.player_2_selection
-	
-	if selected != "" and selected != "Random":
-		return
 	
 	_hide_all_players(player)
 	
@@ -192,6 +190,7 @@ func _on_random_selection_button_1_pressed() -> void:
 	var chosen = _pick_random(GameManager.player_2_selection)
 	lock_in_selection(1, chosen)
 	player_1_label.text = chosen
+	_hide_all_players(1)
 	_show_hover_player(1, chosen) 
 
 func _on_agui_selection_button_2_pressed() -> void: 
@@ -207,6 +206,7 @@ func _on_random_selection_button_2_pressed() -> void:
 	var chosen = _pick_random(GameManager.player_1_selection)
 	lock_in_selection(2, chosen)
 	player_2_label.text = chosen
+	_hide_all_players(2)
 	_show_hover_player(2, chosen) 
 
 func _on_agui_selection_button_1_mouse_entered() -> void: 

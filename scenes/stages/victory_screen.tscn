@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://c2pea0ohjqxi5"]
+[gd_scene load_steps=10 format=3 uid="uid://b4j62rrc13wde"]
 
 [ext_resource type="Script" uid="uid://ba4a7icabujfo" path="res://scripts/victory_screen.gd" id="1_nxaog"]
 [ext_resource type="Texture2D" uid="uid://blmu3ogum7hnr" path="res://assets/images/winner_background.jpeg" id="2_afr1r"]
