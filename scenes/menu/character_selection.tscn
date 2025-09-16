@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://xkw38rwej1lo"]
+[gd_scene load_steps=18 format=3 uid="uid://xkw38rwej1lo"]
 
 [ext_resource type="Script" uid="uid://dhw1gnu4u37lj" path="res://scripts/character_selection.gd" id="1_p436k"]
 [ext_resource type="Texture2D" uid="uid://cxkod2iek3dgf" path="res://assets/images/upb_campus.jpeg" id="2_nj78t"]
@@ -9,9 +9,13 @@
 [ext_resource type="Texture2D" uid="uid://bcby8yf4ocfl" path="res://assets/selection/player1_frame.png" id="7_65j7c"]
 [ext_resource type="Texture2D" uid="uid://dyx1lnm6ly27c" path="res://assets/selection/player2_frame.png" id="8_1074x"]
 [ext_resource type="FontFile" uid="uid://clh8mucu0exxe" path="res://assets/fonts/Minecraft.ttf" id="9_1074x"]
+[ext_resource type="AudioStream" uid="uid://bseonr85jy1vc" path="res://assets/music/Choose.wav.mp3" id="10_fhbqy"]
 [ext_resource type="PackedScene" uid="uid://dvbpse3xbc86v" path="res://scenes/characters/agui_player.tscn" id="10_worrs"]
 [ext_resource type="PackedScene" uid="uid://b7st2qy3hve72" path="res://scenes/characters/diego_player.tscn" id="11_fhbqy"]
+[ext_resource type="AudioStream" uid="uid://c4hoaldrnuduk" path="res://assets/music/Mazen.wav.mp3" id="11_ohehs"]
+[ext_resource type="AudioStream" uid="uid://bx5o00qbpgxgi" path="res://assets/music/Agui.wav.mp3" id="12_3kq38"]
 [ext_resource type="PackedScene" uid="uid://bnn8uw247sqkf" path="res://scenes/characters/mazen_player.tscn" id="12_ohehs"]
+[ext_resource type="AudioStream" uid="uid://4a4tfmdhfiku" path="res://assets/music/Diego.wav.mp3" id="13_8yo71"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_cbear"]
 font = ExtResource("9_1074x")
@@ -139,6 +143,22 @@ offset_right = 1688.0
 offset_bottom = 228.0
 text = "Player 2"
 label_settings = SubResource("LabelSettings_cbear")
+
+[node name="Music" type="Node2D" parent="."]
+position = Vector2(474, 501)
+scale = Vector2(3, 3)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("10_fhbqy")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("11_ohehs")
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("12_3kq38")
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("13_8yo71")
 
 [node name="Agui_Player_1" parent="." instance=ExtResource("10_worrs")]
 position = Vector2(474, 501)

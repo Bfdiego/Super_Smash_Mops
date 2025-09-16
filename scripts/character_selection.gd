@@ -1,34 +1,28 @@
 extends Node2D
 
-# Player 1 Buttons
 @onready var agui_selection_button_1 = $Player1Container/Agui_Selection_Button_1
 @onready var diego_selection_button_1 = $Player1Container/Diego_Selection_Button_1
 @onready var mazen_selection_button_1 = $Player1Container/Mazen_Selection_Button_1
 @onready var random_selection_button_1 = $Player1Container/Random_Selection_Button_1
 
-# Player 2 Buttons
 @onready var agui_selection_button_2 = $Player2Container/Agui_Selection_Button_2
 @onready var diego_selection_button_2 = $Player2Container/Diego_Selection_Button_2
 @onready var mazen_selection_button_2 = $Player2Container/Mazen_Selection_Button_2
 @onready var random_selection_button_2 = $Player2Container/Random_Selection_Button_2
 
-# Player 1 Frames
 @onready var agui_selection_button_1_frame = $Player1Container/Agui_Selection_Button_1/Agui_frame_1
 @onready var diego_selection_button_1_frame = $Player1Container/Diego_Selection_Button_1/Diego_frame_1
 @onready var mazen_selection_button_1_frame = $Player1Container/Mazen_Selection_Button_1/Mazen_frame_1
 @onready var random_selection_button_1_frame = $Player1Container/Random_Selection_Button_1/Random_frame_1
 
-# Player 2 Frames
 @onready var agui_selection_button_2_frame = $Player2Container/Agui_Selection_Button_2/Agui_frame_2
 @onready var diego_selection_button_2_frame = $Player2Container/Diego_Selection_Button_2/Diego_frame_2
 @onready var mazen_selection_button_2_frame = $Player2Container/Mazen_Selection_Button_2/Mazen_frame_2
 @onready var random_selection_button_2_frame = $Player2Container/Random_Selection_Button_2/Random_frame_2
 
-# Labels
 @onready var player_1_label = $Player_1_Label
 @onready var player_2_label = $Player_2_Label
 
-# Players
 @onready var agui_player_1 = $Agui_Player_1
 @onready var agui_player_2 = $Agui_Player_2
 @onready var diego_player_1 = $Diego_Player_1
@@ -36,7 +30,6 @@ extends Node2D
 @onready var mazen_player_1 = $Mazen_Player_1
 @onready var mazen_player_2 = $Mazen_Player_2
 
-# Sprites internos (solo para flip)
 @onready var agui_sprite_1 = $Agui_Player_1/Sprite2D
 @onready var agui_sprite_2 = $Agui_Player_2/Sprite2D
 @onready var diego_sprite_1 = $Diego_Player_1/Sprite2D
@@ -47,6 +40,8 @@ extends Node2D
 var characters = ["Agui", "Diego", "Mazen"]
 
 func _ready() -> void:
+	$Music/AudioStreamPlayer.play()
+	$Music/AudioStreamPlayer.volume_db = 10
 	agui_selection_button_1_frame.visible = false 
 	diego_selection_button_1_frame.visible = false 
 	mazen_selection_button_1_frame.visible = false 
@@ -63,7 +58,6 @@ func _ready() -> void:
 	diego_player_2.visible = false
 	mazen_player_2.visible = false
 
-	# Quitar scripts a jugadores
 	agui_player_1.set_script(null)
 	diego_player_1.set_script(null)
 	mazen_player_1.set_script(null)
@@ -71,13 +65,21 @@ func _ready() -> void:
 	diego_player_2.set_script(null)
 	mazen_player_2.set_script(null)
 
-	# Flip solo en los sprites
 	agui_sprite_1.flip_h = true
 	diego_sprite_2.flip_h = true
 	mazen_sprite_1.flip_h = true
 
 func lock_in_selection(player: int, character: String) -> void:
 	if player == 1:
+		if character == "Agui":
+			$Music/AudioStreamPlayer3.play()
+			$Music/AudioStreamPlayer3.volume_db = 10
+		elif character == "Mazen":
+			$Music/AudioStreamPlayer2.play()
+			$Music/AudioStreamPlayer2.volume_db = 10
+		elif character == "Diego":
+			$Music/AudioStreamPlayer4.play()
+			$Music/AudioStreamPlayer4.volume_db = 10
 		GameManager.player_1_selection = character
 		_show_frame(character, 1)
 		_disable_button(characters[0], 1)
@@ -86,6 +88,15 @@ func lock_in_selection(player: int, character: String) -> void:
 		_disable_button("Random", 1)
 		_disable_button(character, 2)
 	elif player == 2:
+		if character == "Agui":
+			$Music/AudioStreamPlayer3.play()
+			$Music/AudioStreamPlayer3.volume_db = 10
+		elif character == "Mazen":
+			$Music/AudioStreamPlayer2.play()
+			$Music/AudioStreamPlayer2.volume_db = 10
+		elif character == "Diego":
+			$Music/AudioStreamPlayer4.play()
+			$Music/AudioStreamPlayer4.volume_db = 10
 		GameManager.player_2_selection = character
 		_show_frame(character, 2)
 		_disable_button(characters[0], 2)
@@ -95,10 +106,9 @@ func lock_in_selection(player: int, character: String) -> void:
 		_disable_button(character, 1)
 		
 	if GameManager.player_1_selection != "" and GameManager.player_2_selection != "":
+		await get_tree().create_timer(2.0).timeout
 		get_tree().change_scene_to_file("res://scenes/menu/stage_selection.tscn")
-
 func _show_hover_player(player: int, character: String) -> void:
-	# Si ya hay selección y no es Random, no ocultamos al seleccionado
 	var selected = ""
 	if player == 1:
 		selected = GameManager.player_1_selection
@@ -106,13 +116,10 @@ func _show_hover_player(player: int, character: String) -> void:
 		selected = GameManager.player_2_selection
 	
 	if selected != "" and selected != "Random":
-		# Si ya se seleccionó un jugador válido, solo ese permanece visible
 		return
 	
-	# Ocultar todos primero
 	_hide_all_players(player)
 	
-	# Mostrar solo el que tiene el mouse encima
 	match [player, character]:
 		[1, "Agui"]: agui_player_1.visible = true
 		[1, "Diego"]: diego_player_1.visible = true
@@ -165,7 +172,6 @@ func _pick_random(excluded: String) -> String:
 	pool.erase(excluded)
 	return pool[randi() % pool.size()]
 
-# Player 1
 func _on_agui_selection_button_1_pressed() -> void: 
 	lock_in_selection(1, "Agui")
 	
@@ -179,7 +185,6 @@ func _on_random_selection_button_1_pressed() -> void:
 	var chosen = _pick_random(GameManager.player_2_selection)
 	lock_in_selection(1, chosen)
 
-# Player 2
 func _on_agui_selection_button_2_pressed() -> void: 
 	lock_in_selection(2, "Agui")
 	
@@ -232,7 +237,6 @@ func _on_random_selection_button_1_mouse_exited() -> void:
 	if !random_selection_button_1.disabled: 
 		random_selection_button_1_frame.visible = false
 
-# Player 2
 func _on_agui_selection_button_2_mouse_entered() -> void: 
 	if !agui_selection_button_2.disabled: 
 		agui_selection_button_2_frame.visible = true
