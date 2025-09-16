@@ -11,7 +11,8 @@ var attacking: bool = false
 var current_attack: String = ""
 var last_state: String = ""
 var in_air: bool = false
-var player_one: bool = true
+signal lives_changed(current_lives, is_player_one)
+@export var is_player_one: bool = true
 var flip_offset = Vector2(15, 0) 
 
 var key_left: String = ""
@@ -24,7 +25,10 @@ var jump_buffer: bool = false
 var hit_timer: float = 0.0
 var hit_duration: float = 0.4
 
-var lives: int = 3
+
+
+@export var max_lives = 3
+var current_lives: int
 var respawn_point: Vector2 = Vector2.ZERO
 var is_invulnerable: bool = false
 var knockback_force: float = 800.0
@@ -33,7 +37,7 @@ var knockback_force: float = 800.0
 var air_jumps_left: int = 0
 
 func _ready() -> void:
-	if player_one:
+	if is_player_one:
 		key_left = "left_p1"
 		key_right = "right_p1"
 		key_jump = "jump_p1"
@@ -46,6 +50,7 @@ func _ready() -> void:
 		key_attack1 = "attack1_p2"
 		key_attack2 = "attack2_p2"
 	
+	current_lives = max_lives
 	respawn_point = global_position
 	$FlipNode/HitBox.set_meta("force", 400.0)
 	$FlipNode/HitBox2.set_meta("force", 900.0)
@@ -157,18 +162,20 @@ func apply_knockback(from_direction: int, attack_force: float) -> void:
 	if is_invulnerable:
 		print("Golpe ignorado por invulnerabilidad")
 		return
-	var multiplier = (4 - lives)
+	var multiplier = (4 - current_lives)
 	var total_force = attack_force + knockback_force * multiplier
 	velocity.x = from_direction * total_force
 	velocity.y = -300
-	print("Recibió knockback:", total_force, " | Vidas:", lives)
+	print("Recibió knockback:", total_force, " | Vidas:", current_lives)
 	take_hit()
 
 func die() -> void:
-	lives -= 1
-	print("Jugador " + ("1" if player_one else "2") + " murió. Vidas restantes: " + str(lives))
-	if lives <= 0:
-		print("Jugador" + ("1" if player_one else "2") + "fue eliminado!")
+	current_lives -= 1
+	print("Jugador " + ("1" if is_player_one else "2") + " murió. Vidas restantes: " + str(current_lives))
+	emit_signal("lives_changed", current_lives, is_player_one)
+	
+	if current_lives <= 0:
+		print("Jugador" + ("1" if is_player_one else "2") + "fue eliminado!")
 		queue_free()
 	else:
 		respawn()
@@ -177,7 +184,7 @@ func respawn() -> void:
 	global_position = respawn_point
 	velocity = Vector2.ZERO
 	is_invulnerable = true
-	print("Jugador" + ("1" if player_one else "2") + "respawneó con invulnerabilidad")
+	print("Jugador" + ("1" if is_player_one else "2") + "respawneó con invulnerabilidad")
 	await get_tree().create_timer(2.0).timeout
 	is_invulnerable = false
 	print("Invulnerabilidad terminada")

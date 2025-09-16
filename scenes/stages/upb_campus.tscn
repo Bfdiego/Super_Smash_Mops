@@ -124,7 +124,6 @@ process_mode = 4
 position = Vector2(394, 501)
 
 [node name="DiegoPlayer" parent="." instance=ExtResource("5_5sfl0")]
-process_mode = 4
 position = Vector2(408, 501)
 
 [node name="DiegoPlayer2" parent="." instance=ExtResource("5_5sfl0")]
@@ -132,12 +131,12 @@ process_mode = 4
 position = Vector2(1513, 451)
 
 [node name="MazenPlayer2" parent="." instance=ExtResource("4_q7swc")]
-process_mode = 4
 position = Vector2(1498, 445)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="P1Avatar1" type="TextureRect" parent="CanvasLayer"]
+visible = false
 offset_left = 16.0
 offset_top = 12.0
 offset_right = 136.0
@@ -147,6 +146,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="P1Avatar2" type="TextureRect" parent="CanvasLayer"]
+visible = false
 offset_left = 16.0
 offset_top = 12.0
 offset_right = 136.0
@@ -156,6 +156,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="P1Avatar3" type="TextureRect" parent="CanvasLayer"]
+visible = false
 offset_left = 16.0
 offset_top = 12.0
 offset_right = 136.0
@@ -165,6 +166,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="P2Avatar1" type="TextureRect" parent="CanvasLayer"]
+visible = false
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -178,6 +180,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="P2Avatar2" type="TextureRect" parent="CanvasLayer"]
+visible = false
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -191,6 +194,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="P2Avatar3" type="TextureRect" parent="CanvasLayer"]
+visible = false
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
