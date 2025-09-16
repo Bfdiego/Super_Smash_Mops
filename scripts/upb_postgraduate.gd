@@ -22,6 +22,8 @@ var player_one: String = ""
 var player_two: String = ""
 
 func _ready() -> void:
+	$AudioStreamPlayer.play()
+	
 	ThemeSong.get_node("AudioStreamPlayer").stop()
 	player_one = GameManager.player_1_selection
 	player_two = GameManager.player_2_selection

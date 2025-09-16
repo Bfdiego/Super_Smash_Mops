@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dqnit4r01sn0l"]
+[gd_scene load_steps=15 format=3 uid="uid://dqnit4r01sn0l"]
 
 [ext_resource type="Script" uid="uid://c2u7xdos341b8" path="res://scripts/upb_postgraduate.gd" id="1_0nyr2"]
 [ext_resource type="Texture2D" uid="uid://bjiwlixhrfo42" path="res://assets/images/upb_postgraduate.jpeg" id="1_v56jc"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://djy82f4jarrlq" path="res://assets/selection/agui_selection.png" id="6_kbu67"]
 [ext_resource type="Texture2D" uid="uid://bekl15acmfj7j" path="res://assets/empty heart.png" id="7_da6cf"]
 [ext_resource type="Texture2D" uid="uid://cuxyvl2ylg5ht" path="res://assets/heart pixel art 254x254.png" id="8_0nyr2"]
+[ext_resource type="AudioStream" uid="uid://b10i6yt733cp6" path="res://assets/music/22-04. Battlefield.mp3" id="13_7f8hb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tyeeq"]
 size = Vector2(428.557, 76)
@@ -288,3 +289,7 @@ position = Vector2(1594, 375)
 process_mode = 4
 visible = false
 position = Vector2(1576, 373)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_7f8hb")
+parameters/looping = true

@@ -191,6 +191,8 @@ func _on_mazen_selection_button_1_pressed() -> void:
 func _on_random_selection_button_1_pressed() -> void:
 	var chosen = _pick_random(GameManager.player_2_selection)
 	lock_in_selection(1, chosen)
+	player_1_label.text = chosen
+	_show_hover_player(1, chosen) 
 
 func _on_agui_selection_button_2_pressed() -> void: 
 	lock_in_selection(2, "Agui")
@@ -204,6 +206,8 @@ func _on_mazen_selection_button_2_pressed() -> void:
 func _on_random_selection_button_2_pressed() -> void:
 	var chosen = _pick_random(GameManager.player_1_selection)
 	lock_in_selection(2, chosen)
+	player_2_label.text = chosen
+	_show_hover_player(2, chosen) 
 
 func _on_agui_selection_button_1_mouse_entered() -> void: 
 	if !agui_selection_button_1.disabled:

@@ -1,6 +1,5 @@
 extends Node2D
 
-# Players
 @onready var agui_winner = $Agui_Winner
 @onready var agui_loser = $Agui_Loser
 @onready var diego_winner = $Diego_Winner
@@ -8,7 +7,6 @@ extends Node2D
 @onready var mazen_winner = $Mazen_Winner
 @onready var mazen_loser = $Mazen_Loser
 
-# Sprites internos (solo para flip)
 @onready var agui_sprite_winner = $Agui_Winner/Sprite2D
 @onready var agui_sprite_loser = $Agui_Loser/Sprite2D
 @onready var diego_sprite_winner = $Diego_Winner/Sprite2D
@@ -17,6 +15,8 @@ extends Node2D
 @onready var mazen_sprite_loser = $Mazen_Loser/Sprite2D
 
 func _ready() -> void:
+	$AudioStreamPlayer.play()
+	
 	if GameManager.winner == "Agui":
 		agui_winner.visible = true
 	elif GameManager.winner == "Diego":

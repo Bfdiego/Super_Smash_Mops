@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c2pea0ohjqxi5"]
+[gd_scene load_steps=10 format=3 uid="uid://c2pea0ohjqxi5"]
 
 [ext_resource type="Script" uid="uid://ba4a7icabujfo" path="res://scripts/victory_screen.gd" id="1_nxaog"]
 [ext_resource type="Texture2D" uid="uid://blmu3ogum7hnr" path="res://assets/images/winner_background.jpeg" id="2_afr1r"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b7st2qy3hve72" path="res://scenes/characters/diego_player.tscn" id="4_ms0r3"]
 [ext_resource type="PackedScene" uid="uid://bnn8uw247sqkf" path="res://scenes/characters/mazen_player.tscn" id="5_12ji3"]
 [ext_resource type="FontFile" uid="uid://clh8mucu0exxe" path="res://assets/fonts/Minecraft.ttf" id="6_iwu4a"]
+[ext_resource type="AudioStream" uid="uid://dbj4n6gnwqbgp" path="res://assets/music/22-08. Results Display Screen.mp3" id="7_ms0r3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_q7c2e"]
 font = ExtResource("6_iwu4a")
@@ -80,3 +81,7 @@ offset_right = 1717.0
 offset_bottom = 368.0
 text = "LOSER"
 label_settings = SubResource("LabelSettings_8q5mt")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_ms0r3")
+parameters/looping = true
