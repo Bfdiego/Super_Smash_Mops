@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://f1f3ktkwemxk"]
+[gd_scene load_steps=13 format=3 uid="uid://f1f3ktkwemxk"]
 
 [ext_resource type="Texture2D" uid="uid://cxkod2iek3dgf" path="res://assets/images/upb_campus.jpeg" id="1_3vog7"]
 [ext_resource type="Texture2D" uid="uid://broqmci5d4w8t" path="res://assets/images/platform-cloud.png" id="2_1ojnv"]
@@ -6,6 +6,11 @@
 [ext_resource type="PackedScene" uid="uid://dvbpse3xbc86v" path="res://scenes/characters/agui_player.tscn" id="3_bjfve"]
 [ext_resource type="PackedScene" uid="uid://bnn8uw247sqkf" path="res://scenes/characters/mazen_player.tscn" id="4_q7swc"]
 [ext_resource type="PackedScene" uid="uid://b7st2qy3hve72" path="res://scenes/characters/diego_player.tscn" id="5_5sfl0"]
+[ext_resource type="Texture2D" uid="uid://cetr7iaj5egbq" path="res://assets/selection/diego_selection.png" id="7_hls2y"]
+[ext_resource type="Texture2D" uid="uid://bwt0jojo1ykhn" path="res://assets/selection/mazen_selection.png" id="8_i6hwf"]
+[ext_resource type="Texture2D" uid="uid://djy82f4jarrlq" path="res://assets/selection/agui_selection.png" id="9_bv4ge"]
+[ext_resource type="Texture2D" uid="uid://bekl15acmfj7j" path="res://assets/empty heart.png" id="10_fe8eh"]
+[ext_resource type="Texture2D" uid="uid://cuxyvl2ylg5ht" path="res://assets/heart pixel art 254x254.png" id="11_jv6kl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q7swc"]
 size = Vector2(262.375, 60.125)
@@ -127,3 +132,180 @@ position = Vector2(1513, 451)
 [node name="MazenPlayer2" parent="." instance=ExtResource("4_q7swc")]
 process_mode = 4
 position = Vector2(1500, 446)
+position = Vector2(477, 490)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="P1Avatar1" type="TextureRect" parent="CanvasLayer"]
+offset_left = 16.0
+offset_top = 12.0
+offset_right = 136.0
+offset_bottom = 132.0
+texture = ExtResource("7_hls2y")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="P1Avatar2" type="TextureRect" parent="CanvasLayer"]
+offset_left = 16.0
+offset_top = 12.0
+offset_right = 136.0
+offset_bottom = 132.0
+texture = ExtResource("8_i6hwf")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="P1Avatar3" type="TextureRect" parent="CanvasLayer"]
+offset_left = 16.0
+offset_top = 12.0
+offset_right = 136.0
+offset_bottom = 132.0
+texture = ExtResource("9_bv4ge")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="P2Avatar1" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -132.0
+offset_top = 12.0
+offset_right = -12.0
+offset_bottom = 135.0
+grow_horizontal = 0
+texture = ExtResource("7_hls2y")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="P2Avatar2" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -132.0
+offset_top = 12.0
+offset_right = -12.0
+offset_bottom = 135.0
+grow_horizontal = 0
+texture = ExtResource("8_i6hwf")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="P2Avatar3" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -132.0
+offset_top = 12.0
+offset_right = -12.0
+offset_bottom = 135.0
+grow_horizontal = 0
+texture = ExtResource("9_bv4ge")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="P1heartDead" type="TextureRect" parent="CanvasLayer"]
+offset_left = 1672.0
+offset_top = 37.0
+offset_right = 1761.0
+offset_bottom = 126.0
+texture = ExtResource("10_fe8eh")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="P2heartDead" type="TextureRect" parent="CanvasLayer"]
+offset_left = 173.0
+offset_top = 31.0
+offset_right = 262.0
+offset_bottom = 120.0
+texture = ExtResource("10_fe8eh")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="P2heartDead2" type="TextureRect" parent="CanvasLayer"]
+offset_left = 269.0
+offset_top = 32.0
+offset_right = 358.0
+offset_bottom = 121.0
+texture = ExtResource("10_fe8eh")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="P2heartDead3" type="TextureRect" parent="CanvasLayer"]
+offset_left = 369.0
+offset_top = 31.0
+offset_right = 458.0
+offset_bottom = 120.0
+texture = ExtResource("10_fe8eh")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="P1heartDead2" type="TextureRect" parent="CanvasLayer"]
+offset_left = 1558.0
+offset_top = 40.0
+offset_right = 1647.0
+offset_bottom = 129.0
+texture = ExtResource("10_fe8eh")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="P1heartDead3" type="TextureRect" parent="CanvasLayer"]
+offset_left = 1448.0
+offset_top = 40.0
+offset_right = 1537.0
+offset_bottom = 129.0
+texture = ExtResource("10_fe8eh")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="P1heart1" type="TextureRect" parent="CanvasLayer"]
+offset_left = 171.0
+offset_top = 29.0
+offset_right = 260.0
+offset_bottom = 118.0
+texture = ExtResource("11_jv6kl")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="P1heart2" type="TextureRect" parent="CanvasLayer"]
+offset_left = 369.0
+offset_top = 30.0
+offset_right = 458.0
+offset_bottom = 119.0
+texture = ExtResource("11_jv6kl")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="P1heart3" type="TextureRect" parent="CanvasLayer"]
+offset_left = 268.0
+offset_top = 31.0
+offset_right = 357.0
+offset_bottom = 120.0
+texture = ExtResource("11_jv6kl")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="P2heart1" type="TextureRect" parent="CanvasLayer"]
+offset_left = 1673.0
+offset_top = 37.0
+offset_right = 1762.0
+offset_bottom = 126.0
+texture = ExtResource("11_jv6kl")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="P2heart2" type="TextureRect" parent="CanvasLayer"]
+offset_left = 1558.0
+offset_top = 41.0
+offset_right = 1647.0
+offset_bottom = 130.0
+texture = ExtResource("11_jv6kl")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="P2heart3" type="TextureRect" parent="CanvasLayer"]
+offset_left = 1447.0
+offset_top = 43.0
+offset_right = 1536.0
+offset_bottom = 132.0
+texture = ExtResource("11_jv6kl")
+expand_mode = 1
+stretch_mode = 5
