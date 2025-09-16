@@ -11,3 +11,12 @@ func _process(delta: float) -> void:
 	
 	if skip_p1 or skip_p2:
 		_on_next_scene()
+
+func _on_logo_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/menu/mode_selection.tscn")
+
+func _on_logo_mouse_entered() -> void:
+	logo.scale = Vector2(0.9, 0.9)
+
+func _on_logo_mouse_exited() -> void:
+	logo.scale = Vector2(0.8, 0.8)
