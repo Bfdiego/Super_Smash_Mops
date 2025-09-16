@@ -39,7 +39,7 @@ position = Vector2(-853, 195)
 collision_layer = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="Plataforms/Plataform2"]
-position = Vector2(185, -287)
+position = Vector2(185, -288)
 scale = Vector2(0.522461, 0.344758)
 texture = ExtResource("2_tyeeq")
 
