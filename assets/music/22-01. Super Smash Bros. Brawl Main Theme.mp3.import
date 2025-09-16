@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bkj4elka1q4mn"
+path="res://.godot/imported/22-01. Super Smash Bros. Brawl Main Theme.mp3-821f3c3a4b2a7e4a7d0660ef263d5910.mp3str"
+
+[deps]
+
+source_file="res://assets/music/22-01. Super Smash Bros. Brawl Main Theme.mp3"
+dest_files=["res://.godot/imported/22-01. Super Smash Bros. Brawl Main Theme.mp3-821f3c3a4b2a7e4a7d0660ef263d5910.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,3 +1,28 @@
-[gd_scene format=3 uid="uid://47a0juqlx6u3"]
+[gd_scene load_steps=3 format=3 uid="uid://db4i55b5nrbk3"]
+
+[ext_resource type="AudioStream" uid="uid://bkj4elka1q4mn" path="res://assets/music/22-01. Super Smash Bros. Brawl Main Theme.mp3" id="1_5kxrs"]
+
+[sub_resource type="GDScript" id="GDScript_rr7dq"]
+script/source = "extends AudioStreamPlayer
+
+var allowed_scenes = [\"res://scenes/menu/menu.tscn\", \"res://scenes/menu/mode_selection.tscn\", \"res://scenes/menu/stage_selection.tscn\"]
+
+func _ready():
+	get_tree().get_root().add_child(self)
+	self.owner = null
+	
+	if not playing:
+		play()
+
+func _process(_delta):
+	var current_scene = get_tree().current_scene
+	if current_scene:
+		var current_scene_path = current_scene.get_scene_file_path()
+		if current_scene_path not in allowed_scenes:
+			queue_free()
+"
 
 [node name="BrawlTheme" type="AudioStreamPlayer"]
+stream = ExtResource("1_5kxrs")
+autoplay = true
+script = SubResource("GDScript_rr7dq")

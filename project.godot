@@ -15,6 +15,10 @@ run/main_scene="uid://bsmdhe4tdv60d"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+ThemeSong="*res://scenes/menu/theme_song.tscn"
+
 [display]
 
 window/size/viewport_width=1920

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://33mo15ybo5x0"]
+
+[ext_resource type="AudioStream" uid="uid://bkj4elka1q4mn" path="res://assets/music/22-01. Super Smash Bros. Brawl Main Theme.mp3" id="1_gkn24"]
+[ext_resource type="Script" uid="uid://odgmbsg020hi" path="res://scenes/menu/theme_song.gd" id="2_cx0g4"]
+
+[node name="ThemeSong" type="Node2D"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("1_gkn24")
+script = ExtResource("2_cx0g4")
