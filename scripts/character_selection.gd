@@ -75,6 +75,13 @@ func _ready() -> void:
 	agui_sprite_1.flip_h = true
 	diego_sprite_2.flip_h = true
 	mazen_sprite_1.flip_h = true
+	
+func _process(delta: float) -> void:
+	var quit = Input.is_action_just_pressed("return")
+	if quit:
+		get_tree().change_scene_to_file("res://scenes/menu/mode_selection.tscn")
+		GameManager.player_1_selection = ""
+		GameManager.player_2_selection = ""
 
 func lock_in_selection(player: int, character: String) -> void:
 	if player == 1:
