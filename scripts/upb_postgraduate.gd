@@ -58,6 +58,14 @@ func _ready() -> void:
 			continue
 		p.connect("lives_changed", Callable(self, "update_hearts"))
 		
+func _process(delta: float) -> void:
+	var quit = Input.is_action_just_pressed("return")
+	if quit:
+		get_tree().change_scene_to_file("res://scenes/menu/menu.tscn")
+		GameManager.player_1_selection = ""
+		GameManager.player_2_selection = ""
+		GameManager.winner = ""
+		GameManager.loser = ""
 
 func update_hearts(current_lives: int, is_player_one: bool) -> void:
 	

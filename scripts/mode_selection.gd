@@ -6,6 +6,13 @@ extends Node2D
 @onready var multi_player = $MultiPlayer
 @onready var multi_player2 = $MultiPlayer2
 
+func _process(delta: float) -> void:
+	var quit = Input.is_action_just_pressed("return")
+	if quit:
+		get_tree().change_scene_to_file("res://scenes/menu/menu.tscn")
+		GameManager.player_1_selection = ""
+		GameManager.player_2_selection = ""
+
 func _on_single_player_button_pressed() -> void:
 	print("Project still in development\n Single Player mode not ready yet!")
 
