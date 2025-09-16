@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://fhx2g50jntn3"]
+[gd_scene load_steps=14 format=3 uid="uid://xkw38rwej1lo"]
 
 [ext_resource type="Script" uid="uid://dhw1gnu4u37lj" path="res://scripts/character_selection.gd" id="1_p436k"]
 [ext_resource type="Texture2D" uid="uid://cxkod2iek3dgf" path="res://assets/images/upb_campus.jpeg" id="2_nj78t"]
@@ -141,7 +141,7 @@ text = "Player 2"
 label_settings = SubResource("LabelSettings_cbear")
 
 [node name="Agui_Player_1" parent="." instance=ExtResource("10_worrs")]
-position = Vector2(402, 493)
+position = Vector2(474, 501)
 scale = Vector2(3, 3)
 motion_mode = 1
 
@@ -158,8 +158,7 @@ scale = Vector2(3, 3)
 motion_mode = 1
 
 [node name="Diego_Player_2" parent="." instance=ExtResource("11_fhbqy")]
-visible = false
-position = Vector2(1404, 507)
+position = Vector2(1206, 517)
 scale = Vector2(3, 3)
 motion_mode = 1
 

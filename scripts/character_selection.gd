@@ -29,12 +29,20 @@ extends Node2D
 @onready var player_2_label = $Player_2_Label
 
 # Players
-@onready var agui_player_1 = $Agui_Player_1/Sprite2D
-@onready var agui_player_2 = $Agui_Player_2/Sprite2D
-@onready var diego_player_1 = $Diego_Player_1/Sprite2D
-@onready var diego_player_2 = $Diego_Player_2/Sprite2D
-@onready var mazen_player_1 = $Mazen_Player_1/Sprite2D
-@onready var mazen_player_2 = $Mazen_Player_2/Sprite2D
+@onready var agui_player_1 = $Agui_Player_1
+@onready var agui_player_2 = $Agui_Player_2
+@onready var diego_player_1 = $Diego_Player_1
+@onready var diego_player_2 = $Diego_Player_2
+@onready var mazen_player_1 = $Mazen_Player_1
+@onready var mazen_player_2 = $Mazen_Player_2
+
+# Sprites internos (solo para flip)
+@onready var agui_sprite_1 = $Agui_Player_1/Sprite2D
+@onready var agui_sprite_2 = $Agui_Player_2/Sprite2D
+@onready var diego_sprite_1 = $Diego_Player_1/Sprite2D
+@onready var diego_sprite_2 = $Diego_Player_2/Sprite2D
+@onready var mazen_sprite_1 = $Mazen_Player_1/Sprite2D
+@onready var mazen_sprite_2 = $Mazen_Player_2/Sprite2D
 
 var characters = ["Agui", "Diego", "Mazen"]
 
@@ -47,25 +55,26 @@ func _ready() -> void:
 	diego_selection_button_2_frame.visible = false 
 	mazen_selection_button_2_frame.visible = false 
 	random_selection_button_2_frame.visible = false
+	
 	agui_player_1.visible = false
 	diego_player_1.visible = false
 	mazen_player_1.visible = false
-	
 	agui_player_2.visible = false
 	diego_player_2.visible = false
 	mazen_player_2.visible = false
-	
+
+	# Quitar scripts a jugadores
 	agui_player_1.set_script(null)
 	diego_player_1.set_script(null)
 	mazen_player_1.set_script(null)
-	
 	agui_player_2.set_script(null)
 	diego_player_2.set_script(null)
 	mazen_player_2.set_script(null)
-	
-	agui_player_1.flip_h = true
-	diego_player_2.flip_h = true
-	mazen_player_1.flip_h = true
+
+	# Flip solo en los sprites
+	agui_sprite_1.flip_h = true
+	diego_sprite_2.flip_h = true
+	mazen_sprite_1.flip_h = true
 
 func lock_in_selection(player: int, character: String) -> void:
 	if player == 1:
@@ -86,6 +95,29 @@ func lock_in_selection(player: int, character: String) -> void:
 	if GameManager.player_1_selection != "" and GameManager.player_2_selection != "":
 		get_tree().change_scene_to_file("res://scenes/menu/stage_selection.tscn")
 
+func _show_hover_player(player: int, character: String) -> void:
+	# Si ya hay selección y no es Random, no ocultamos al seleccionado
+	var selected = ""
+	if player == 1:
+		selected = GameManager.player_1_selection
+	elif player == 2:
+		selected = GameManager.player_2_selection
+	
+	if selected != "" and selected != "Random":
+		# Si ya se seleccionó un jugador válido, solo ese permanece visible
+		return
+	
+	# Ocultar todos primero
+	_hide_all_players(player)
+	
+	# Mostrar solo el que tiene el mouse encima
+	match [player, character]:
+		[1, "Agui"]: agui_player_1.visible = true
+		[1, "Diego"]: diego_player_1.visible = true
+		[1, "Mazen"]: mazen_player_1.visible = true
+		[2, "Agui"]: agui_player_2.visible = true
+		[2, "Diego"]: diego_player_2.visible = true
+		[2, "Mazen"]: mazen_player_2.visible = true
 
 func _show_frame(character: String, player: int) -> void:
 	var frame
@@ -115,6 +147,16 @@ func _disable_button(character: String, player: int) -> void:
 	if button:
 		button.disabled = true
 		button.modulate = Color(0.5, 0.5, 0.5)
+
+func _hide_all_players(player: int) -> void:
+	if player == 1:
+		agui_player_1.visible = false
+		diego_player_1.visible = false
+		mazen_player_1.visible = false
+	elif player == 2:
+		agui_player_2.visible = false
+		diego_player_2.visible = false
+		mazen_player_2.visible = false
 
 func _pick_random(excluded: String) -> String:
 	var pool = characters.duplicate()
@@ -150,30 +192,30 @@ func _on_random_selection_button_2_pressed() -> void:
 	lock_in_selection(2, chosen)
 
 func _on_agui_selection_button_1_mouse_entered() -> void: 
-	if !agui_selection_button_1.disabled: 
+	if !agui_selection_button_1.disabled:
 		agui_selection_button_1_frame.visible = true
 		player_1_label.text = "Agui"
-		agui_player_1.visible = true
+		_show_hover_player(1, "Agui")
 	
 func _on_agui_selection_button_1_mouse_exited() -> void: 
 	if !agui_selection_button_1.disabled: 
 		agui_selection_button_1_frame.visible = false
 
 func _on_diego_selection_button_1_mouse_entered() -> void: 
-	if !diego_selection_button_1.disabled: 
+	if !diego_selection_button_1.disabled:
 		diego_selection_button_1_frame.visible = true
 		player_1_label.text = "Diego"
-		diego_player_1.visible = true
+		_show_hover_player(1, "Diego")
 	
 func _on_diego_selection_button_1_mouse_exited() -> void: 
 	if !diego_selection_button_1.disabled: 
 		diego_selection_button_1_frame.visible = false
 
-func _on_mazen_selection_button_1_mouse_entered() -> void: 
-	if !mazen_selection_button_1.disabled: 
+func _on_mazen_selection_button_1_mouse_entered() -> void:
+	if !mazen_selection_button_1.disabled:
 		mazen_selection_button_1_frame.visible = true
 		player_1_label.text = "Mazen"
-		mazen_player_1.visible = true
+		_show_hover_player(1, "Mazen")
 	
 func _on_mazen_selection_button_1_mouse_exited() -> void: 
 	if !mazen_selection_button_1.disabled: 
@@ -193,7 +235,7 @@ func _on_agui_selection_button_2_mouse_entered() -> void:
 	if !agui_selection_button_2.disabled: 
 		agui_selection_button_2_frame.visible = true
 		player_2_label.text = "Agui"
-		agui_player_2.visible = true
+		_show_hover_player(2, "Agui")
 	
 func _on_agui_selection_button_2_mouse_exited() -> void: 
 	if !agui_selection_button_2.disabled: 
@@ -203,7 +245,7 @@ func _on_diego_selection_button_2_mouse_entered() -> void:
 	if !diego_selection_button_2.disabled: 
 		diego_selection_button_2_frame.visible = true
 		player_2_label.text = "Diego"
-		diego_player_2.visible = true
+		_show_hover_player(2, "Diego")
 	
 func _on_diego_selection_button_2_mouse_exited() -> void: 
 	if !diego_selection_button_2.disabled: 
@@ -213,7 +255,7 @@ func _on_mazen_selection_button_2_mouse_entered() -> void:
 	if !mazen_selection_button_2.disabled: 
 		mazen_selection_button_2_frame.visible = true
 		player_2_label.text = "Mazen"
-		mazen_player_2.visible = true
+		_show_hover_player(2, "Mazen")
 	
 func _on_mazen_selection_button_2_mouse_exited() -> void: 
 	if !mazen_selection_button_2.disabled:
