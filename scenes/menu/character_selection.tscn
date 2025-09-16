@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://fhx2g50jntn3"]
+[gd_scene load_steps=14 format=3 uid="uid://fhx2g50jntn3"]
 
 [ext_resource type="Script" uid="uid://dhw1gnu4u37lj" path="res://scripts/character_selection.gd" id="1_p436k"]
 [ext_resource type="Texture2D" uid="uid://cxkod2iek3dgf" path="res://assets/images/upb_campus.jpeg" id="2_nj78t"]
@@ -9,6 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://bcby8yf4ocfl" path="res://assets/selection/player1_frame.png" id="7_65j7c"]
 [ext_resource type="Texture2D" uid="uid://dyx1lnm6ly27c" path="res://assets/selection/player2_frame.png" id="8_1074x"]
 [ext_resource type="FontFile" uid="uid://clh8mucu0exxe" path="res://assets/fonts/Minecraft.ttf" id="9_1074x"]
+[ext_resource type="PackedScene" uid="uid://dvbpse3xbc86v" path="res://scenes/characters/agui_player.tscn" id="10_worrs"]
+[ext_resource type="PackedScene" uid="uid://b7st2qy3hve72" path="res://scenes/characters/diego_player.tscn" id="11_fhbqy"]
+[ext_resource type="PackedScene" uid="uid://bnn8uw247sqkf" path="res://scenes/characters/mazen_player.tscn" id="12_ohehs"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_cbear"]
 font = ExtResource("9_1074x")
@@ -136,6 +139,41 @@ offset_right = 1688.0
 offset_bottom = 228.0
 text = "Player 2"
 label_settings = SubResource("LabelSettings_cbear")
+
+[node name="Agui_Player_1" parent="." instance=ExtResource("10_worrs")]
+position = Vector2(402, 493)
+scale = Vector2(3, 3)
+motion_mode = 1
+
+[node name="Agui_Player_2" parent="." instance=ExtResource("10_worrs")]
+visible = false
+position = Vector2(1369, 493)
+scale = Vector2(3, 3)
+motion_mode = 1
+
+[node name="Diego_Player_1" parent="." instance=ExtResource("11_fhbqy")]
+visible = false
+position = Vector2(434, 507)
+scale = Vector2(3, 3)
+motion_mode = 1
+
+[node name="Diego_Player_2" parent="." instance=ExtResource("11_fhbqy")]
+visible = false
+position = Vector2(1404, 507)
+scale = Vector2(3, 3)
+motion_mode = 1
+
+[node name="Mazen_Player_1" parent="." instance=ExtResource("12_ohehs")]
+visible = false
+position = Vector2(393, 499)
+scale = Vector2(3, 3)
+motion_mode = 1
+
+[node name="Mazen_Player_2" parent="." instance=ExtResource("12_ohehs")]
+visible = false
+position = Vector2(1356, 499)
+scale = Vector2(3, 3)
+motion_mode = 1
 
 [connection signal="mouse_entered" from="Player1Container/Agui_Selection_Button_1" to="." method="_on_agui_selection_button_1_mouse_entered"]
 [connection signal="mouse_exited" from="Player1Container/Agui_Selection_Button_1" to="." method="_on_agui_selection_button_1_mouse_exited"]
