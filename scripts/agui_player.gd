@@ -12,7 +12,7 @@ var current_attack: String = ""
 var last_state: String = ""
 var in_air: bool = false
 signal lives_changed(current_lives, is_player_one)
-@export var is_player_one: bool = true
+@export var is_player_one: bool
 var flip_offset = Vector2(15, 0) 
 
 var key_left: String = ""
@@ -37,6 +37,12 @@ var knockback_force: float = 800.0
 var air_jumps_left: int = 0
 
 func _ready() -> void:
+	var namep1 = GameManager.player_1_selection
+	var namep2 = GameManager.player_2_selection
+	if  namep1 == "Agui":
+		is_player_one = true
+	elif namep2 == "Agui":
+		is_player_one = false
 	if is_player_one:
 		key_left = "left_p1"
 		key_right = "right_p1"
@@ -49,6 +55,7 @@ func _ready() -> void:
 		key_jump = "jump_p2"
 		key_attack1 = "attack1_p2"
 		key_attack2 = "attack2_p2"
+	
 	
 	current_lives = max_lives
 	respawn_point = global_position

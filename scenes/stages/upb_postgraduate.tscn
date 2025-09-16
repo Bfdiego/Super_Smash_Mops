@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://dqnit4r01sn0l"]
 
-[ext_resource type="Script" path="res://scripts/upb_postgraduate.gd" id="1_0nyr2"]
+[ext_resource type="Script" uid="uid://c2u7xdos341b8" path="res://scripts/upb_postgraduate.gd" id="1_0nyr2"]
 [ext_resource type="Texture2D" uid="uid://bjiwlixhrfo42" path="res://assets/images/upb_postgraduate.jpeg" id="1_v56jc"]
 [ext_resource type="Texture2D" uid="uid://c1anvf1rb5jk8" path="res://assets/images/platform-cement.png" id="2_tyeeq"]
 [ext_resource type="Texture2D" uid="uid://ckgrfoah22eit" path="res://assets/images/plarform-main-rock.png" id="3_qprlw"]
@@ -80,6 +80,7 @@ shape = SubResource("RectangleShape2D_tyeeq")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="P1Avatar1" type="TextureRect" parent="CanvasLayer"]
+visible = false
 offset_left = 16.0
 offset_top = 12.0
 offset_right = 136.0
@@ -89,6 +90,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="P1Avatar2" type="TextureRect" parent="CanvasLayer"]
+visible = false
 offset_left = 16.0
 offset_top = 12.0
 offset_right = 136.0
@@ -98,6 +100,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="P1Avatar3" type="TextureRect" parent="CanvasLayer"]
+visible = false
 offset_left = 16.0
 offset_top = 12.0
 offset_right = 136.0
@@ -107,6 +110,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="P2Avatar1" type="TextureRect" parent="CanvasLayer"]
+visible = false
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -120,6 +124,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="P2Avatar2" type="TextureRect" parent="CanvasLayer"]
+visible = false
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -133,6 +138,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="P2Avatar3" type="TextureRect" parent="CanvasLayer"]
+visible = false
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -255,24 +261,30 @@ stretch_mode = 5
 
 [node name="AguiPlayer" parent="." instance=ExtResource("4_qprlw")]
 process_mode = 4
+visible = false
 position = Vector2(404, 292)
 
 [node name="AguiPlayer2" parent="." instance=ExtResource("4_qprlw")]
 process_mode = 4
+visible = false
 position = Vector2(1589, 367)
 
 [node name="MazenPlayer" parent="." instance=ExtResource("5_gi4bc")]
 process_mode = 4
+visible = false
 position = Vector2(397, 293)
 
 [node name="DiegoPlayer" parent="." instance=ExtResource("4_blmu4")]
 process_mode = 4
+visible = false
 position = Vector2(411, 293)
 
 [node name="DiegoPlayer2" parent="." instance=ExtResource("4_blmu4")]
 process_mode = 4
+visible = false
 position = Vector2(1594, 375)
 
 [node name="MazenPlayer2" parent="." instance=ExtResource("5_gi4bc")]
 process_mode = 4
+visible = false
 position = Vector2(1576, 373)

@@ -13,7 +13,7 @@ var current_attack: String = ""
 var last_state: String = ""
 
 signal lives_changed(current_lives, is_player_one)
-@export var is_player_one: bool = true
+@export var is_player_one: bool
 var flip_offset = Vector2(3, 0) 
 var flip_offset_2 = Vector2(40, 0) 
 var flip_offset_p = Vector2(40, 0) 
@@ -38,6 +38,12 @@ var jump_buffer: bool = false
 var air_jumps_left: int = 0
 
 func _ready() -> void:
+	var namep1 = GameManager.player_1_selection
+	var namep2 = GameManager.player_2_selection
+	if  namep1 == "Diego":
+		is_player_one = true
+	elif namep2 == "Diego":
+		is_player_one = false
 	if is_player_one:
 		key_left = "left_p1"
 		key_right = "right_p1"
