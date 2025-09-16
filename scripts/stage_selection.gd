@@ -16,18 +16,18 @@ func _on_campus_selection_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/stages/upb_campus.tscn")
 
 func _on_postgraduate_selection_button_pressed() -> void:
-	$Node2D/AudioStreamPlayer2.play()
-	$Node2D/AudioStreamPlayer2.volume_db = 15
+	$Node2D/AudioStreamPlayer3.play()
+	$Node2D/AudioStreamPlayer3.volume_db = 15
 	await get_tree().create_timer(1.5).timeout
 	get_tree().change_scene_to_file("res://scenes/stages/upb_postgraduate.tscn")
 
 func _process(delta: float) -> void:
 	var quit = Input.is_action_just_pressed("return")
 	if quit:
-		get_tree().change_scene_to_file("res://scenes/menu/character_selection.tscn")
+		get_tree().change_scene_to_file("res://scenes/menu/menu.tscn")
 		GameManager.player_1_selection = ""
 		GameManager.player_2_selection = ""
-#Hovering
+
 func _on_campus_selection_button_mouse_entered() -> void:
 	campus_button.scale = Vector2(0.3, 0.3)
 	campus_background.visible = true

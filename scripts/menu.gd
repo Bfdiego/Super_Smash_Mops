@@ -2,6 +2,9 @@ extends Node2D
 
 @onready var logo = $Logo
 
+func _ready() -> void:
+	ThemeSong.play_song()
+	
 func _on_next_scene() -> void:
 	get_tree().change_scene_to_file("res://scenes/menu/mode_selection.tscn")
 

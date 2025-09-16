@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dx1r6jey8j5uf"]
+[gd_scene load_steps=9 format=3 uid="uid://dsmkw4867wp3b"]
 
 [ext_resource type="Script" uid="uid://dc5vuv1o1khrp" path="res://scripts/stage_selection.gd" id="1_c81uv"]
 [ext_resource type="Texture2D" uid="uid://bjiwlixhrfo42" path="res://assets/images/upb_postgraduate.jpeg" id="2_0cgpq"]

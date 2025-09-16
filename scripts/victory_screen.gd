@@ -30,16 +30,14 @@ func _ready() -> void:
 		diego_loser.visible = true
 	elif GameManager.loser == "Mazen":
 		mazen_loser.visible = true
-		
-	# Quitar scripts a jugadores
+	
 	agui_winner.set_script(null)
 	agui_loser.set_script(null)
 	diego_winner.set_script(null)
 	diego_loser.set_script(null)
 	mazen_winner.set_script(null)
 	mazen_loser.set_script(null)
-
-	# Flip solo en los sprites
+	
 	diego_sprite_winner.flip_h = true
 	diego_sprite_loser.flip_h = true
 
@@ -47,7 +45,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	var quit = Input.is_action_just_pressed("return")
 	if quit:
-		get_tree().change_scene_to_file("res://scenes/menu/character_selection.tscn")
+		get_tree().change_scene_to_file("res://scenes/menu/menu.tscn")
 		GameManager.player_1_selection = ""
 		GameManager.player_2_selection = ""
 		GameManager.winner = ""
