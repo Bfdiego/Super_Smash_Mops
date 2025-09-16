@@ -26,8 +26,6 @@ var jump_buffer: bool = false
 var hit_timer: float = 0.0
 var hit_duration: float = 0.4
 
-
-
 @export var max_lives = 3
 var current_lives: int
 var respawn_point: Vector2 = Vector2.ZERO
@@ -185,6 +183,10 @@ func die() -> void:
 	if current_lives <= 0:
 		print("Jugador" + ("1" if is_player_one else "2") + "fue eliminado!")
 		emit_signal("player_eliminated", is_player_one)
+		var loser_name = GameManager.player_1_selection if is_player_one else GameManager.player_2_selection
+		var winner_name = GameManager.player_2_selection if is_player_one else GameManager.player_1_selection
+		GameManager.loser = loser_name
+		GameManager.winner = winner_name
 		queue_free()
 	else:
 		respawn()

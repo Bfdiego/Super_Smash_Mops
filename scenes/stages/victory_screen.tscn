@@ -44,7 +44,7 @@ motion_mode = 1
 
 [node name="Diego_Winner" parent="." instance=ExtResource("4_ms0r3")]
 visible = false
-position = Vector2(442, 617)
+position = Vector2(251, 623)
 scale = Vector2(5, 5)
 motion_mode = 1
 
