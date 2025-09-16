@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dbj4n6gnwqbgp"
+path="res://.godot/imported/22-08. Results Display Screen.mp3-e2f5d11f2eea84da6c49591dcec6969f.mp3str"
+
+[deps]
+
+source_file="res://assets/music/22-08. Results Display Screen.mp3"
+dest_files=["res://.godot/imported/22-08. Results Display Screen.mp3-e2f5d11f2eea84da6c49591dcec6969f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

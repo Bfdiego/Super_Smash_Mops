@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b10i6yt733cp6"
+path="res://.godot/imported/22-04. Battlefield.mp3-6ceff29105a29e9643ce9e2c24b7c29b.mp3str"
+
+[deps]
+
+source_file="res://assets/music/22-04. Battlefield.mp3"
+dest_files=["res://.godot/imported/22-04. Battlefield.mp3-6ceff29105a29e9643ce9e2c24b7c29b.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
