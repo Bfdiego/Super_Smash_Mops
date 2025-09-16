@@ -57,7 +57,7 @@ func _ready() -> void:
 		if p == null:
 			continue
 		p.connect("lives_changed", Callable(self, "update_hearts"))
-		p.connect("player_eliminated", self, "_on_player_eliminated")
+		p.connect("player_eliminated", Callable(self, "_on_player_eliminated"))
 
 func _process(delta: float) -> void:
 	var quit = Input.is_action_just_pressed("return")
@@ -87,4 +87,4 @@ func _on_player_eliminated(is_player_one: bool) -> void:
 	add_child(timer)
 	timer.start()
 	await timer.timeout
-	get_tree().change_scene_to_file("res://scenes/game_over.tscn")
+	get_tree().change_scene_to_file("res://scenes/stages/victory_screen.tscn")
