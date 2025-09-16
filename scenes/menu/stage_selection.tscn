@@ -1,10 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://dsmkw4867wp3b"]
+[gd_scene load_steps=9 format=3 uid="uid://dx1r6jey8j5uf"]
 
 [ext_resource type="Script" uid="uid://dc5vuv1o1khrp" path="res://scripts/stage_selection.gd" id="1_c81uv"]
 [ext_resource type="Texture2D" uid="uid://bjiwlixhrfo42" path="res://assets/images/upb_postgraduate.jpeg" id="2_0cgpq"]
 [ext_resource type="Texture2D" uid="uid://cxkod2iek3dgf" path="res://assets/images/upb_campus.jpeg" id="3_c8om0"]
 [ext_resource type="Texture2D" uid="uid://br3mqgy5gs571" path="res://assets/selection/campus_selection.png" id="4_aw78k"]
 [ext_resource type="Texture2D" uid="uid://dwfas33ppc2i3" path="res://assets/selection/postgraduate_selection.png" id="5_ijijq"]
+[ext_resource type="AudioStream" uid="uid://dlh1umkcn252x" path="res://assets/music/Choose_battle.wav.mp3" id="6_c8om0"]
+[ext_resource type="AudioStream" uid="uid://dnk4lqmgfl2da" path="res://assets/music/upb_campus.wav.mp3" id="7_aw78k"]
+[ext_resource type="AudioStream" uid="uid://iiv447178apt" path="res://assets/music/upb_post.mp3" id="8_ijijq"]
 
 [node name="StageSelection" type="Node2D"]
 script = ExtResource("1_c81uv")
@@ -38,6 +41,17 @@ offset_bottom = 1124.0
 scale = Vector2(0.25, 0.25)
 pivot_offset = Vector2(500, 500)
 texture_normal = ExtResource("5_ijijq")
+
+[node name="Node2D" type="Node2D" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Node2D"]
+stream = ExtResource("6_c8om0")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="Node2D"]
+stream = ExtResource("7_aw78k")
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="Node2D"]
+stream = ExtResource("8_ijijq")
 
 [connection signal="mouse_entered" from="Campus_Selection_Button" to="." method="_on_campus_selection_button_mouse_entered"]
 [connection signal="mouse_exited" from="Campus_Selection_Button" to="." method="_on_campus_selection_button_mouse_exited"]

@@ -41,7 +41,7 @@ var characters = ["Agui", "Diego", "Mazen"]
 
 func _ready() -> void:
 	$Music/AudioStreamPlayer.play()
-	$Music/AudioStreamPlayer.volume_db = 10
+	$Music/AudioStreamPlayer.volume_db = 15
 	agui_selection_button_1_frame.visible = false 
 	diego_selection_button_1_frame.visible = false 
 	mazen_selection_button_1_frame.visible = false 
@@ -73,13 +73,13 @@ func lock_in_selection(player: int, character: String) -> void:
 	if player == 1:
 		if character == "Agui":
 			$Music/AudioStreamPlayer3.play()
-			$Music/AudioStreamPlayer3.volume_db = 10
+			$Music/AudioStreamPlayer3.volume_db = 15
 		elif character == "Mazen":
 			$Music/AudioStreamPlayer2.play()
-			$Music/AudioStreamPlayer2.volume_db = 10
+			$Music/AudioStreamPlayer2.volume_db = 15
 		elif character == "Diego":
 			$Music/AudioStreamPlayer4.play()
-			$Music/AudioStreamPlayer4.volume_db = 10
+			$Music/AudioStreamPlayer4.volume_db = 15
 		GameManager.player_1_selection = character
 		_show_frame(character, 1)
 		_disable_button(characters[0], 1)
@@ -90,13 +90,13 @@ func lock_in_selection(player: int, character: String) -> void:
 	elif player == 2:
 		if character == "Agui":
 			$Music/AudioStreamPlayer3.play()
-			$Music/AudioStreamPlayer3.volume_db = 10
+			$Music/AudioStreamPlayer3.volume_db = 15
 		elif character == "Mazen":
 			$Music/AudioStreamPlayer2.play()
-			$Music/AudioStreamPlayer2.volume_db = 10
+			$Music/AudioStreamPlayer2.volume_db = 15
 		elif character == "Diego":
 			$Music/AudioStreamPlayer4.play()
-			$Music/AudioStreamPlayer4.volume_db = 10
+			$Music/AudioStreamPlayer4.volume_db = 15
 		GameManager.player_2_selection = character
 		_show_frame(character, 2)
 		_disable_button(characters[0], 2)
