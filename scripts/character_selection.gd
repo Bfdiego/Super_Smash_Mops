@@ -83,6 +83,7 @@ func lock_in_selection(player: int, character: String) -> void:
 		_disable_button(characters[0], 1)
 		_disable_button(characters[1], 1)
 		_disable_button(characters[2], 1)
+		_disable_button("Random", 1)
 		_disable_button(character, 2)
 	elif player == 2:
 		GameManager.player_2_selection = character
@@ -90,6 +91,7 @@ func lock_in_selection(player: int, character: String) -> void:
 		_disable_button(characters[0], 2)
 		_disable_button(characters[1], 2)
 		_disable_button(characters[2], 2)
+		_disable_button("Random", 2)
 		_disable_button(character, 1)
 		
 	if GameManager.player_1_selection != "" and GameManager.player_2_selection != "":
