@@ -28,6 +28,14 @@ extends Node2D
 @onready var player_1_label = $Player_1_Label
 @onready var player_2_label = $Player_2_Label
 
+# Players
+@onready var agui_player_1 = $Agui_Player_1/Sprite2D
+@onready var agui_player_2 = $Agui_Player_2/Sprite2D
+@onready var diego_player_1 = $Diego_Player_1/Sprite2D
+@onready var diego_player_2 = $Diego_Player_2/Sprite2D
+@onready var mazen_player_1 = $Mazen_Player_1/Sprite2D
+@onready var mazen_player_2 = $Mazen_Player_2/Sprite2D
+
 var characters = ["Agui", "Diego", "Mazen"]
 
 func _ready() -> void:
@@ -39,17 +47,40 @@ func _ready() -> void:
 	diego_selection_button_2_frame.visible = false 
 	mazen_selection_button_2_frame.visible = false 
 	random_selection_button_2_frame.visible = false
+	agui_player_1.visible = false
+	diego_player_1.visible = false
+	mazen_player_1.visible = false
+	
+	agui_player_2.visible = false
+	diego_player_2.visible = false
+	mazen_player_2.visible = false
+	
+	agui_player_1.set_script(null)
+	diego_player_1.set_script(null)
+	mazen_player_1.set_script(null)
+	
+	agui_player_2.set_script(null)
+	diego_player_2.set_script(null)
+	mazen_player_2.set_script(null)
+	
+	agui_player_1.flip_h = true
+	diego_player_2.flip_h = true
+	mazen_player_1.flip_h = true
 
 func lock_in_selection(player: int, character: String) -> void:
 	if player == 1:
 		GameManager.player_1_selection = character
 		_show_frame(character, 1)
-		_disable_button(character, 1)
+		_disable_button(characters[0], 1)
+		_disable_button(characters[1], 1)
+		_disable_button(characters[2], 1)
 		_disable_button(character, 2)
 	elif player == 2:
 		GameManager.player_2_selection = character
 		_show_frame(character, 2)
-		_disable_button(character, 2)
+		_disable_button(characters[0], 2)
+		_disable_button(characters[1], 2)
+		_disable_button(characters[2], 2)
 		_disable_button(character, 1)
 		
 	if GameManager.player_1_selection != "" and GameManager.player_2_selection != "":
@@ -122,6 +153,7 @@ func _on_agui_selection_button_1_mouse_entered() -> void:
 	if !agui_selection_button_1.disabled: 
 		agui_selection_button_1_frame.visible = true
 		player_1_label.text = "Agui"
+		agui_player_1.visible = true
 	
 func _on_agui_selection_button_1_mouse_exited() -> void: 
 	if !agui_selection_button_1.disabled: 
@@ -131,6 +163,7 @@ func _on_diego_selection_button_1_mouse_entered() -> void:
 	if !diego_selection_button_1.disabled: 
 		diego_selection_button_1_frame.visible = true
 		player_1_label.text = "Diego"
+		diego_player_1.visible = true
 	
 func _on_diego_selection_button_1_mouse_exited() -> void: 
 	if !diego_selection_button_1.disabled: 
@@ -140,6 +173,7 @@ func _on_mazen_selection_button_1_mouse_entered() -> void:
 	if !mazen_selection_button_1.disabled: 
 		mazen_selection_button_1_frame.visible = true
 		player_1_label.text = "Mazen"
+		mazen_player_1.visible = true
 	
 func _on_mazen_selection_button_1_mouse_exited() -> void: 
 	if !mazen_selection_button_1.disabled: 
@@ -159,6 +193,7 @@ func _on_agui_selection_button_2_mouse_entered() -> void:
 	if !agui_selection_button_2.disabled: 
 		agui_selection_button_2_frame.visible = true
 		player_2_label.text = "Agui"
+		agui_player_2.visible = true
 	
 func _on_agui_selection_button_2_mouse_exited() -> void: 
 	if !agui_selection_button_2.disabled: 
@@ -168,6 +203,7 @@ func _on_diego_selection_button_2_mouse_entered() -> void:
 	if !diego_selection_button_2.disabled: 
 		diego_selection_button_2_frame.visible = true
 		player_2_label.text = "Diego"
+		diego_player_2.visible = true
 	
 func _on_diego_selection_button_2_mouse_exited() -> void: 
 	if !diego_selection_button_2.disabled: 
@@ -177,6 +213,7 @@ func _on_mazen_selection_button_2_mouse_entered() -> void:
 	if !mazen_selection_button_2.disabled: 
 		mazen_selection_button_2_frame.visible = true
 		player_2_label.text = "Mazen"
+		mazen_player_2.visible = true
 	
 func _on_mazen_selection_button_2_mouse_exited() -> void: 
 	if !mazen_selection_button_2.disabled:
