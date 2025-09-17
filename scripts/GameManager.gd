@@ -5,3 +5,5 @@ var player_2_selection: String = ""
 
 var winner: String = ""
 var loser: String = ""
+
+var stage: String = ""

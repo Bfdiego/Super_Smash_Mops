@@ -4,6 +4,11 @@ extends Node2D
 
 func _ready() -> void:
 	ThemeSong.play_song()
+	GameManager.player_1_selection = ""
+	GameManager.player_2_selection = ""
+	GameManager.winner = ""
+	GameManager.loser = ""
+	GameManager.stage = ""
 	
 func _on_next_scene() -> void:
 	get_tree().change_scene_to_file("res://scenes/menu/mode_selection.tscn")

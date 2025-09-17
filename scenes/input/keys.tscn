@@ -1,3 +1,16 @@
-[gd_scene format=3 uid="uid://rtkt0unrwo2"]
+[gd_scene load_steps=3 format=3 uid="uid://rtkt0unrwo2"]
+
+[ext_resource type="Script" uid="uid://cagsc7psmy4qb" path="res://scripts/keys.gd" id="1_keblq"]
+[ext_resource type="Texture2D" uid="uid://dvr0eli5rflck" path="res://assets/images/players_control_screen.png" id="2_nelpn"]
 
 [node name="Keys" type="Node2D"]
+script = ExtResource("1_keblq")
+
+[node name="Background" type="TextureRect" parent="."]
+offset_right = 1921.0
+offset_bottom = 1081.0
+texture = ExtResource("2_nelpn")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
