@@ -40,6 +40,7 @@ extends Node2D
 var characters = ["Agui", "Diego", "Mazen"]
 
 func _ready() -> void:
+	$Loading.visible = false
 	$Music/AudioStreamPlayer.play()
 	$Music/AudioStreamPlayer.volume_db = 15
 	agui_selection_button_1_frame.visible = false 
@@ -113,6 +114,7 @@ func lock_in_selection(player: int, character: String) -> void:
 		_disable_button(character, 1)
 		
 	if GameManager.player_1_selection != "" and GameManager.player_2_selection != "":
+		$Loading.visible = true
 		await get_tree().create_timer(2.0).timeout
 		get_tree().change_scene_to_file("res://scenes/menu/stage_selection.tscn")
 

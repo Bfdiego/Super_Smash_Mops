@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://xkw38rwej1lo"]
+[gd_scene load_steps=19 format=3 uid="uid://xkw38rwej1lo"]
 
 [ext_resource type="Script" uid="uid://dhw1gnu4u37lj" path="res://scripts/character_selection.gd" id="1_p436k"]
 [ext_resource type="Texture2D" uid="uid://cxkod2iek3dgf" path="res://assets/images/upb_campus.jpeg" id="2_nj78t"]
@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://bx5o00qbpgxgi" path="res://assets/music/Agui.wav.mp3" id="12_3kq38"]
 [ext_resource type="PackedScene" uid="uid://bnn8uw247sqkf" path="res://scenes/characters/mazen_player.tscn" id="12_ohehs"]
 [ext_resource type="AudioStream" uid="uid://4a4tfmdhfiku" path="res://assets/music/Diego.wav.mp3" id="13_8yo71"]
+[ext_resource type="PackedScene" uid="uid://kqitw3qltwmr" path="res://scenes/input/loading.tscn" id="17_f23x8"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_cbear"]
 font = ExtResource("9_1074x")
@@ -193,6 +194,11 @@ visible = false
 position = Vector2(1356, 499)
 scale = Vector2(3, 3)
 motion_mode = 1
+
+[node name="Loading" parent="." instance=ExtResource("17_f23x8")]
+visible = false
+position = Vector2(960, 1010)
+scale = Vector2(0.247, 0.247)
 
 [connection signal="mouse_entered" from="Player1Container/Agui_Selection_Button_1" to="." method="_on_agui_selection_button_1_mouse_entered"]
 [connection signal="mouse_exited" from="Player1Container/Agui_Selection_Button_1" to="." method="_on_agui_selection_button_1_mouse_exited"]

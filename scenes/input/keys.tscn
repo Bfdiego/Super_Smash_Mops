@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://rtkt0unrwo2"]
+[gd_scene load_steps=4 format=3 uid="uid://rtkt0unrwo2"]
 
 [ext_resource type="Script" uid="uid://cagsc7psmy4qb" path="res://scripts/keys.gd" id="1_keblq"]
 [ext_resource type="Texture2D" uid="uid://dvr0eli5rflck" path="res://assets/images/players_control_screen.png" id="2_nelpn"]
+[ext_resource type="PackedScene" uid="uid://kqitw3qltwmr" path="res://scenes/input/loading.tscn" id="3_nelpn"]
 
 [node name="Keys" type="Node2D"]
 script = ExtResource("1_keblq")
@@ -14,3 +15,8 @@ texture = ExtResource("2_nelpn")
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="Loading" parent="." instance=ExtResource("3_nelpn")]
+visible = false
+position = Vector2(960, 1010)
+scale = Vector2(0.246667, 0.246667)

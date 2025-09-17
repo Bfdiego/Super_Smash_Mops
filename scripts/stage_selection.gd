@@ -5,13 +5,22 @@ extends Node2D
 @onready var campus_button = $Campus_Selection_Button
 @onready var campus_background = $Campus_Background
 
+var freeze: bool
+
 func _ready() -> void:
+	freeze = false
+	$Loading.visible = false
 	$Node2D/AudioStreamPlayer.play()
 	$Node2D/AudioStreamPlayer.volume_db = 15
+
+func _freeze_visuals() -> void:
+	freeze = true
+	$Loading.visible = true
 
 func _on_campus_selection_button_pressed() -> void:
 	$Node2D/AudioStreamPlayer2.play()
 	$Node2D/AudioStreamPlayer2.volume_db = 15
+	_freeze_visuals()
 	await get_tree().create_timer(1.5).timeout
 	GameManager.stage = "res://scenes/stages/upb_campus.tscn"
 	get_tree().change_scene_to_file("res://scenes/input/keys.tscn")
@@ -19,6 +28,7 @@ func _on_campus_selection_button_pressed() -> void:
 func _on_postgraduate_selection_button_pressed() -> void:
 	$Node2D/AudioStreamPlayer3.play()
 	$Node2D/AudioStreamPlayer3.volume_db = 15
+	_freeze_visuals()
 	await get_tree().create_timer(1.5).timeout
 	GameManager.stage = "res://scenes/stages/upb_postgraduate.tscn"
 	get_tree().change_scene_to_file("res://scenes/input/keys.tscn")
@@ -31,17 +41,21 @@ func _process(delta: float) -> void:
 		GameManager.player_2_selection = ""
 
 func _on_campus_selection_button_mouse_entered() -> void:
-	campus_button.scale = Vector2(0.3, 0.3)
-	campus_background.visible = true
-	postgraduate_background.visible = false
+	if not freeze:
+		campus_button.scale = Vector2(0.3, 0.3)
+		campus_background.visible = true
+		postgraduate_background.visible = false
 
 func _on_campus_selection_button_mouse_exited() -> void:
-	campus_button.scale = Vector2(0.25, 0.25)
+	if not freeze:
+		campus_button.scale = Vector2(0.25, 0.25)
 
 func _on_postgraduate_selection_button_mouse_entered() -> void:
-	postgraduate_button.scale = Vector2(0.3, 0.3)
-	postgraduate_background.visible = true
-	campus_background.visible = false
+	if not freeze:
+		postgraduate_button.scale = Vector2(0.3, 0.3)
+		postgraduate_background.visible = true
+		campus_background.visible = false
 
 func _on_postgraduate_selection_button_mouse_exited() -> void:
-	postgraduate_button.scale = Vector2(0.25, 0.25)
+	if not freeze:
+		postgraduate_button.scale = Vector2(0.25, 0.25)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://f1f3ktkwemxk"]
 
 [ext_resource type="Texture2D" uid="uid://cxkod2iek3dgf" path="res://assets/images/upb_campus.jpeg" id="1_3vog7"]
-[ext_resource type="Script" path="res://scripts/upb_campus.gd" id="1_i6hwf"]
+[ext_resource type="Script" uid="uid://8u0vn07bm3ai" path="res://scripts/upb_campus.gd" id="1_i6hwf"]
 [ext_resource type="Texture2D" uid="uid://broqmci5d4w8t" path="res://assets/images/platform-cloud.png" id="2_1ojnv"]
 [ext_resource type="Texture2D" uid="uid://dlbxrateho43m" path="res://assets/images/platform-grass.png" id="2_bjfve"]
 [ext_resource type="PackedScene" uid="uid://dvbpse3xbc86v" path="res://scenes/characters/agui_player.tscn" id="3_bjfve"]
@@ -10,8 +10,8 @@
 [ext_resource type="Texture2D" uid="uid://cetr7iaj5egbq" path="res://assets/selection/diego_selection.png" id="7_hls2y"]
 [ext_resource type="Texture2D" uid="uid://bwt0jojo1ykhn" path="res://assets/selection/mazen_selection.png" id="8_i6hwf"]
 [ext_resource type="Texture2D" uid="uid://djy82f4jarrlq" path="res://assets/selection/agui_selection.png" id="9_bv4ge"]
-[ext_resource type="Texture2D" uid="uid://bekl15acmfj7j" path="res://assets/empty heart.png" id="10_fe8eh"]
-[ext_resource type="Texture2D" uid="uid://cuxyvl2ylg5ht" path="res://assets/heart pixel art 254x254.png" id="11_jv6kl"]
+[ext_resource type="Texture2D" uid="uid://bekl15acmfj7j" path="res://assets/images/empty heart.png" id="10_fe8eh"]
+[ext_resource type="Texture2D" uid="uid://cuxyvl2ylg5ht" path="res://assets/images/heart pixel art 254x254.png" id="11_jv6kl"]
 [ext_resource type="AudioStream" uid="uid://b10i6yt733cp6" path="res://assets/music/22-04. Battlefield.mp3" id="13_bv4ge"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q7swc"]
