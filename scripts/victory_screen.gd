@@ -44,7 +44,9 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	var quit = Input.is_action_just_pressed("return")
-	if quit:
+	var skip = Input.is_action_just_pressed("ok")
+	
+	if quit || skip:
 		get_tree().change_scene_to_file("res://scenes/menu/menu.tscn")
 		GameManager.player_1_selection = ""
 		GameManager.player_2_selection = ""

@@ -18,10 +18,9 @@ func _process(delta: float) -> void:
 	if quit:
 		get_tree().quit()
 
-	var skip_p1 = Input.is_action_just_pressed("ok_p1")
-	var skip_p2 = Input.is_action_just_pressed("ok_p2")
+	var skip = Input.is_action_just_pressed("ok")
 	
-	if skip_p1 or skip_p2:
+	if skip:
 		_on_next_scene()
 
 func _on_logo_pressed() -> void:

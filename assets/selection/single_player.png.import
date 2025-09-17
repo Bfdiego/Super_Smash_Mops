@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ck7a6ec0tlfrc"
-path="res://.godot/imported/choose_mops.png-f784d124be34aec673394487ce018fb6.ctex"
+uid="uid://emmwvm76i0hi"
+path="res://.godot/imported/single_player.png-53f9bff4c19ad2336800f85bd7fa0382.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/choose_mops.png"
-dest_files=["res://.godot/imported/choose_mops.png-f784d124be34aec673394487ce018fb6.ctex"]
+source_file="res://assets/selection/single_player.png"
+dest_files=["res://.godot/imported/single_player.png-53f9bff4c19ad2336800f85bd7fa0382.ctex"]
 
 [params]
 
