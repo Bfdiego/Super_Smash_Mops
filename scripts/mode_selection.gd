@@ -17,6 +17,8 @@ func _on_single_player_button_pressed() -> void:
 	print("Project still in development\n Single Player mode not ready yet!")
 
 func _on_multi_player_button_pressed() -> void:
+	$Loading.visible = true
+	await get_tree().create_timer(2.0).timeout
 	get_tree().change_scene_to_file("res://scenes/menu/character_selection.tscn")
 
 func _on_single_player_button_mouse_entered() -> void:
